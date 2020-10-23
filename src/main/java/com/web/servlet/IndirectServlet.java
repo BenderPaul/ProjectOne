@@ -27,11 +27,11 @@ import javax.servlet.http.HttpServletResponse;
  */
 
 public class IndirectServlet extends HttpServlet {
-
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//resp.sendRedirect("WebCode/html/landing.html");
-		
+		resp.sendRedirect("WebCode/html/landing.html");
+		req.getContextPath();
 		req.getRequestDispatcher("WebCode/html/login.html").forward(req,resp);
 	}
 	

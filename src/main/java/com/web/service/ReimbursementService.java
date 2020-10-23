@@ -37,5 +37,13 @@ public class ReimbursementService {
 	public int delete(Integer i) {
 		return rd.delete(i);
 	}
+	
+	public String getReimbStatus(Reimbursement t) {
+		return rd.getReimbStatus(t);
+	}
+	
+	public String getReimbursementType(Reimbursement t) {
+		return rd.getReimbType(t);
+	}
 
 }

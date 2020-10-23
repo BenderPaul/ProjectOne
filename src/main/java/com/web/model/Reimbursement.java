@@ -9,22 +9,26 @@ public class Reimbursement {
 	private String submittedDate;
 	private String resolvedDate;
 	private String description;
-	//private ByteStream reciept;
+	private String reciept;
 	private int reimbursementAuthor; 
 	private int reimbursementResolver;
 	private int reimbursementStatusId;
 	private int reimbursementTypeId;
 	
 	
+	
+
+
 	public Reimbursement(int reimbursementId, BigDecimal reimbursementAmount, String submittedDate, String resolvedDate,
-			String description, int reimbursementAuthor, int reimbursementResolver, int reimbursementStatusId,
-			int reimbursementTypeId) {
+			String description, String reciept, int reimbursementAuthor, int reimbursementResolver,
+			int reimbursementStatusId, int reimbursementTypeId) {
 		super();
 		this.reimbursementId = reimbursementId;
 		this.reimbursementAmount = reimbursementAmount;
 		this.submittedDate = submittedDate;
 		this.resolvedDate = resolvedDate;
 		this.description = description;
+		this.reciept = reciept;
 		this.reimbursementAuthor = reimbursementAuthor;
 		this.reimbursementResolver = reimbursementResolver;
 		this.reimbursementStatusId = reimbursementStatusId;
