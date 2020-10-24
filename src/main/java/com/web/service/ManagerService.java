@@ -2,8 +2,7 @@ package com.web.service;
 
 import java.util.List;
 
-import org.apache.catalina.Manager;
-
+import com.web.model.Manager;
 import com.web.repo.ManagerDao;
 
 public class ManagerService {

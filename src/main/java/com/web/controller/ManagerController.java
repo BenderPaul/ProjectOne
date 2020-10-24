@@ -5,8 +5,7 @@ import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.catalina.Manager;
-
+import com.web.model.Manager;
 import com.web.service.ManagerService;
 
 public class ManagerController {
