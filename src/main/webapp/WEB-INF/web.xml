@@ -5,27 +5,22 @@
 	version="2.5">
 	<display-name>ProjectOne</display-name>
 	<welcome-file-list>
-		<welcome-file>WebCode/html/landing.html</welcome-file>
+		<welcome-file>WebCode/html/index.html</welcome-file>
 	</welcome-file-list>
 
 	<servlet>
-		<servlet-name>indirect</servlet-name>
+		<servlet-name>IndirectServlet</servlet-name>
 		<servlet-class>com.web.servlet.IndirectServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>indirect</servlet-name>
+		<servlet-name>IndirectServlet</servlet-name>
 		<url-pattern>/redirect</url-pattern>
 	</servlet-mapping>
 
-	<servlet-mapping>
-		<servlet-name>indirect</servlet-name>
-		<url-pattern>/forward</url-pattern>
-	</servlet-mapping>
-	
-	<servlet-mapping>
+	 
+	<!-- <servlet-mapping>
 	<servlet-name>indirect</servlet-name>
 	<url-pattern>/login</url-pattern>
-	</servlet-mapping>
-
+	</servlet-mapping> -->
 </web-app>

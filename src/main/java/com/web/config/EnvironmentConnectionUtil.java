@@ -11,7 +11,6 @@ public class EnvironmentConnectionUtil {
 	 * 
 	 * The url, username, and password variables are taken from the environment global environment launch configuration.
 	 */
-	
 	private String url = System.getenv("url");
 	private String username = System.getenv("username");
 	private String password = System.getenv("password");
