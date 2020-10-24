@@ -2,7 +2,8 @@ package com.web.repo;
 
 import java.util.List;
 
-import org.apache.catalina.Manager;
+import com.web.model.Manager;
+
 
 public class ManagerDao  implements DaoContract<Manager, Integer>{
 
