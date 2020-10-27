@@ -19,7 +19,7 @@
 
 	<servlet-mapping>
 		<servlet-name>IndirectServlet</servlet-name>
-		<url-pattern>/redirect</url-pattern>
+		<url-pattern>*.redirect</url-pattern>
 	</servlet-mapping>
 	
 	<!-- <servlet-mapping>

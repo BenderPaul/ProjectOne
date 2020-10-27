@@ -36,6 +36,7 @@ public class IndirectServlet extends HttpServlet {
 	public void data(HttpServletRequest req, HttpServletResponse resp) throws IOException{
 		switch(req.getRequestURI()) {
 		case "/Project1/all.json":
+			System.out.println("yay?");
 			new ReimbDataController().sendAllData(resp);
 			break;
 		case "/Project1/reimb.json":
