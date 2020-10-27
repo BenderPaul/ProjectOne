@@ -1,37 +1,17 @@
 package com.web.servlet;
 
-import java.io.Console;
 import java.io.IOException;
-import java.io.PrintWriter;
 
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.web.controller.ReimbDataController;
+import com.web.controller.ReimbursementController;
 import com.web.model.User;
 import com.web.repo.UserDao;
 
-/**
- * 
- * Hierarchy:
- * 
- * 		Servlet (Interface)
- * 			GenericServlet (AC)
- * 				HttpServlet (AC)
- * 					CustomServlet (Our class)
- * 
- * 	Direct response:
- * 	
- * 	Forward response:
- * 		We candle the request in-house within our own web-app
- * 
- * 	Redirect response:
- * 		sends the user to a completely different server / web application
- * 		Url will change
- */
-//@WebServlet("/processlogin")
 @SuppressWarnings("serial")
 public class IndirectServlet extends HttpServlet {
 	
@@ -53,18 +33,16 @@ public class IndirectServlet extends HttpServlet {
 		//req.getRequestDispatcher("WebCode/html/login.html").forward(req,resp);
 	}
 	
-//	public void displayData(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-//		try {
-//			resp.setContentType("text/html");
-//			PrintWriter out = resp.getWriter(); 
-//			out.println("<html><body>");
-//			out.print("stuff?");
-//			out.print("Data:  "+ud.findAll().toString());
-//			out.close();
-//		}catch (Exception e) {
-//			System.out.println(e.getStackTrace());
-//		}
-//	}
+	public void data(HttpServletRequest req, HttpServletResponse resp) throws IOException{
+		switch(req.getRequestURI()) {
+		case "/Project1/all.json":
+			new ReimbDataController().sendAllData(resp);
+			break;
+		case "/Project1/reimb.json":
+			new ReimbursementController().create(req, resp);
+			break;
+		}
+	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

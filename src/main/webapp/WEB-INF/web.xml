@@ -12,11 +12,20 @@
 		<servlet-name>IndirectServlet</servlet-name>
 		<servlet-class>com.web.servlet.IndirectServlet</servlet-class>
 	</servlet>
+	<!-- <servlet> -->
+	<!-- <servlet-name>DataServlet</servlet-name>
+	<servlet-class>com.web.servlet.DataServlet</servlet-class>
+	</servlet> -->
 
 	<servlet-mapping>
 		<servlet-name>IndirectServlet</servlet-name>
 		<url-pattern>/redirect</url-pattern>
 	</servlet-mapping>
+	
+	<!-- <servlet-mapping>
+	<servlet-name>DataServlet</servlet-name>
+	<url-pattern>*.json</url-pattern>
+	</servlet-mapping> -->
 
 	 
 	<!-- <servlet-mapping>

@@ -45,5 +45,9 @@ public class ReimbursementService {
 	public String getReimbursementType(Reimbursement t) {
 		return rd.getReimbType(t);
 	}
+	
+	public int createNewReimb(Reimbursement t, String firstname, String lastname) {
+		return rd.createNewReimb(t, firstname, lastname);
+	}
 
 }
