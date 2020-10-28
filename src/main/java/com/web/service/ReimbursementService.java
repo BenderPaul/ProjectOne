@@ -24,6 +24,9 @@ public class ReimbursementService {
 	public List<Reimbursement> findHistory(){
 		return rd.findAllNotPending();
 	}
+	public List<Reimbursement> findOpenReimbs(){
+		return rd.findOpenReimbs();
+	}
 	public List<Reimbursement> findAll() {
 		return rd.findAll();
 	}

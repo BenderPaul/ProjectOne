@@ -34,6 +34,10 @@ function renderTable(reimbursements) {
 			if (reimb.reimbursementTypeId === 2){
 				type = "Robbery"
 			}
+			if (reimb.reimbursementTypeId === 2){
+				type = "Pay Advance"
+			}
+
 
 		IDTd.innerText = reimb.reimbursementId;
 		amountTd.innerText = reimb.reimbursementAmount;

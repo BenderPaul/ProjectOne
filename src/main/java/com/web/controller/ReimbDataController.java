@@ -31,6 +31,15 @@ public class ReimbDataController {
 			e.printStackTrace();
 		}		
 	}
+	public void sendOpenReimbs(HttpServletResponse resp) {
+		resp.setContentType("text/json");
+		List<Reimbursement> reimb = rs.findOpenReimbs();
+		try {
+			resp.getWriter().println(new ObjectMapper().writeValueAsString(reimb));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}		
+	}
 	
 	public void sendAllData(HttpServletResponse res) {
 		res.setContentType("text/json");

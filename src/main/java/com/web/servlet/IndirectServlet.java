@@ -49,8 +49,13 @@ public class IndirectServlet extends HttpServlet {
 			System.out.println("we're calling all dads, here");
 			new UserService().create(req, resp);
 			break;
-		case "Project1/history.json":
+		case "/Project1/history.json":
+			System.out.println("Reimbursement History Servlet called");
 			new ReimbDataController().sendDataHistory(resp);
+			break;
+		case "/Project1/openreimbs.json":
+			System.out.println("Open reimbursements servlet called");
+			new ReimbDataController().sendOpenReimbs(resp);
 			break;
 		}
 	}

@@ -36,6 +36,9 @@ function renderTable(reimbursements) {
 			if (reimb.reimbursementTypeId === 2){
 				type = "Robbery"
 			}
+			if (reimb.reimbursementTypeId === 2){
+				type = "Pay Advance"
+			}
 
 
 		IDTd.innerText = reimb.reimbursementId;
@@ -70,7 +73,7 @@ function renderTable(reimbursements) {
 
 //document.getElementById("claimSubmit").addEventListener('click', addReimbursement);
 
- fetch('http://localhost:8080/Project1/all.json', {
+ fetch('http://localhost:8080/Project1/openreimbs.json', {
   	body: JSON.stringify(),
   	method: 'post',
  	mode: "no-cors",

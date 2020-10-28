@@ -54,6 +54,23 @@ public class ReimbursementDao implements DaoContract<Reimbursement,Integer> {
 		}
 		return reimb;
 	}
+	
+	public List<Reimbursement> findOpenReimbs() {
+		List<Reimbursement> reimb = new LinkedList<>();
+		try(Connection conn = DriverManager.getConnection("jdbc:postgresql://revature-db1.cpvgxtqimmru.us-west-2.rds.amazonaws.com:5432/postgres?currentSchema=projectone","revature", "revature")){
+
+			Statement s = conn.createStatement();
+			String sql = "select * from ers_reimbursement where reimb_status_id < 3";
+			ResultSet rs = s.executeQuery(sql);
+			while(rs.next()) {
+				reimb.add(new Reimbursement(rs.getInt(1), rs.getBigDecimal(2), rs.getDate(3), rs.getDate(4), rs.getString(5), rs.getInt(6), rs.getInt(7), rs.getInt(8), rs.getInt(9)));
+			}
+			rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return reimb;
+	}
 
 	@Override
 	public Reimbursement findById(Integer i) { 

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-sdfgsdfhgsdfhfdghdfgh
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +8,69 @@ sdfgsdfhgsdfhfdghdfgh
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/starter-template/">
     <link rel="shortcut icon" href="">
     <title>Document</title>
+    <style>
+        .title {
+            font-size: 35px;
+            text-shadow: steelblue;
+        }
+
+        body {
+            background: linear-gradient(90deg, #e4f8ca 0%, #90b7e9ee 100%);
+        }
+
+        .button {
+            cursor: pointer;
+            transition-duration: 1s;
+        }
+
+        .buttonContainer {
+            height: 200px;
+            position: relative right;
+            margin-top: 6em;
+            left: 25%;
+        }
+
+        .loginbtn:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .frontpage {
+            margin: auto;
+            width: 60%;
+            border: 3px solid #304d61;
+            padding: 10px;
+            text-align: center;
+            margin-top: 5em;
+        }
+
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        .reviews {
+            margin-top: 10em;
+            display: grid;
+            grid-template-columns: auto auto auto;
+            font-weight: 600;
+        }
+
+        .revsources {
+            display: grid;
+            grid-template-columns: auto auto auto;
+        }
+    </style>
 </head>
 
 <body>
@@ -30,38 +92,44 @@ sdfgsdfhgsdfhfdghdfgh
         </div>
     </nav>
 
-    <main>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+    <main role="main" class="container">
+        <div class="frontpage">
+            <h1 class="title">New Reimbursement Claim</h1>
+        </div>
+        <div class="buttonContainer">
+            <div>
+                <button type="button" class="btn btn-primary btn-lg"
+                    onclick="document.location='/Project1/WebCode/html/employeeportal.html'">Back</button>
+            </div>
+        </div>
         <form action="/Project1/reimb.json" method="POST">
             <div class="form-group">
               <label for="newemail">Reimbursement Amount</label>
-              <input type="currency" class="form-control" id="newemail" name="reimbursementAmount" aria-describedby="emailHelp">
+              <input type="currency" class="form-control" id="reimb_amount" name="reimb_amount" aria-describedby="emailHelp">
             </div>
             <div class="form-group">
-              <label for="First Name">First Name</label>
-              <input type="date" class="form-control" id="firstname" name="reimb_submitted">
+              <label for="First Name">Submission Date</label>
+              <input type="text" class="form-control" id="reimb_submitted" name="reimb_submitted" aria-describedby="datehelp">
+              <small id="datehelp" class="form-text text-muted">YYYY-MM-DD</small>
             </div>
             <div class="form-group">
-                <label for="">Last Name</label>
-                <input type="text" class="form-control" id="lastname" name="reimb_description">
+                <label for="">Description</label>
+                <input type="text" class="form-control" id="reimb_description" name="reimb_description">
               </div>
               <div class="form-group">
-                <label for="newemail">Username</label>
-                <input type="name" class="form-control" id="username" name="user_first_name">
+                <label for="newemail">First Name</label>
+                <input type="text" class="form-control" id="user_first_name" name="user_first_name">
               </div>
               <div class="form-group">
-                <label for="newemail">Password</label>
-                <input type="name" class="form-control" id="password" name="user_last_name">
+                <label for="newemail">Last Name</label>
+                <input type="text" class="form-control" id="user_last_name" name="user_last_name">
               </div>
               <div class="form-group">
-                <label for="newemail">Password</label>
-                <input type="email" class="form-control" id="password" name="reimb_type_id">
+                <label for="newemail">Reimbursement Type</label>
+                <input type="number" class="form-control" id="reimb_type_id" name="reimb_type_id" aria-describedby="typehelp">
+                <small id="typehelp" class="form-text text-muted">1: Purchase  2: Robbery  3: Payment Advance</small>
               </div>
-            <button type="submit" class="btn btn-primary">Submit Claim</button>
+            <button id ="claimsubmit" type="submit" class="btn btn-primary">Submit Claim</button>
             </form>
 
 
