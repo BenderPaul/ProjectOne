@@ -21,7 +21,9 @@ public class ReimbursementService {
 		super();
 		this.rd = rd;
 	}
-	
+	public List<Reimbursement> findHistory(){
+		return rd.findAllNotPending();
+	}
 	public List<Reimbursement> findAll() {
 		return rd.findAll();
 	}

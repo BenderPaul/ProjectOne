@@ -48,6 +48,10 @@ public class IndirectServlet extends HttpServlet {
 		case "/Project1/newdad.json":
 			System.out.println("we're calling all dads, here");
 			new UserService().create(req, resp);
+			break;
+		case "Project1/history.json":
+			new ReimbDataController().sendDataHistory(resp);
+			break;
 		}
 	}
 	

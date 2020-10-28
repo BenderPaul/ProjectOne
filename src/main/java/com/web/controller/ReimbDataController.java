@@ -22,12 +22,21 @@ public class ReimbDataController {
 		this.rs = rs;
 	}
 	
+	public void sendDataHistory(HttpServletResponse resp) {
+		resp.setContentType("text/json");
+		List<Reimbursement> reimb = rs.findHistory();
+		try {
+			resp.getWriter().println(new ObjectMapper().writeValueAsString(reimb));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}		
+	}
+	
 	public void sendAllData(HttpServletResponse res) {
 		res.setContentType("text/json");
 		List<Reimbursement> reimb = rs.findAll();
 		try {
 			res.getWriter().println(new ObjectMapper().writeValueAsString(reimb));
-			System.out.println(reimb.get(0).toString());
 		} catch (IOException e) {
 			e.printStackTrace();
 			}
