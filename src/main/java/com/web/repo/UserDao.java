@@ -1,6 +1,7 @@
 package com.web.repo;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,7 +20,7 @@ public class UserDao implements DaoContract<User, Integer> {
 	public List<User> findAll() {
 		List<User> user = new LinkedList<>();
 		String sql = "select * from ers_users";
-		try(Connection conn = EnvironmentConnectionUtil.getInstance().getConnection()){
+		try(Connection conn = DriverManager.getConnection("jdbc:postgresql://revature-db1.cpvgxtqimmru.us-west-2.rds.amazonaws.com:5432/postgres?currentSchema=projectone","revature", "revature")){
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
@@ -36,7 +37,9 @@ public class UserDao implements DaoContract<User, Integer> {
 	public User findById(Integer i) {
 		User findUser = null;
 		String sqlQuery = "select * from ers_users where ers_users_id = ?";
-		try (Connection conn = EnvironmentConnectionUtil.getInstance().getConnection(); PreparedStatement ps = conn.prepareStatement(sqlQuery)){
+		try(Connection conn = DriverManager.getConnection("jdbc:postgresql://revature-db1.cpvgxtqimmru.us-west-2.rds.amazonaws.com:5432/postgres?currentSchema=projectone","revature", "revature")){
+
+				PreparedStatement ps = conn.prepareStatement(sqlQuery);
 			ps.setInt(1, i);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
@@ -76,7 +79,9 @@ public class UserDao implements DaoContract<User, Integer> {
 	public String getJobTitle(User t) {
 		String title = null;
 		String sqlQuery = "select user_role from ers_user_roles where ers_user_role_id = ?";
-		try (Connection conn = EnvironmentConnectionUtil.getInstance().getConnection(); PreparedStatement ps = conn.prepareStatement(sqlQuery)){
+		try(Connection conn = DriverManager.getConnection("jdbc:postgresql://revature-db1.cpvgxtqimmru.us-west-2.rds.amazonaws.com:5432/postgres?currentSchema=projectone","revature", "revature")){
+
+				PreparedStatement ps = conn.prepareStatement(sqlQuery);
 			ps.setInt(1, t.getUserId());
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
@@ -92,7 +97,9 @@ public class UserDao implements DaoContract<User, Integer> {
 	public int getEmployeeId(String firstname, String lastName) {
 		int employeeId = 0;
 		String sql = "select ers_users_id from ers_users where user_first_name = ? and user_last_name = ?";
-		try (Connection conn = EnvironmentConnectionUtil.getInstance().getConnection(); PreparedStatement ps = conn.prepareStatement(sql)){
+		try(Connection conn = DriverManager.getConnection("jdbc:postgresql://revature-db1.cpvgxtqimmru.us-west-2.rds.amazonaws.com:5432/postgres?currentSchema=projectone","revature", "revature")){
+ 
+				PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, firstname);
 			ps.setString(2, lastName);
 			ResultSet rs = ps.executeQuery();
@@ -107,7 +114,9 @@ public class UserDao implements DaoContract<User, Integer> {
 	
 	public int create(HttpServletRequest req, HttpServletResponse resp) {
 		String sqlQuery = "insert into ers_users (ers_users_id, ers_username, ers_password, user_first_name, user_last_name, user_email, user_role_id) values (default, ?, ?, ?, ?, ?, 1)";
-		try (Connection conn = EnvironmentConnectionUtil.getInstance().getConnection(); PreparedStatement ps = conn.prepareStatement(sqlQuery)){
+		try(Connection conn = DriverManager.getConnection("jdbc:postgresql://revature-db1.cpvgxtqimmru.us-west-2.rds.amazonaws.com:5432/postgres?currentSchema=projectone","revature", "revature")){
+ 
+				PreparedStatement ps = conn.prepareStatement(sqlQuery);
 			ps.setString(1, req.getParameter("username"));
 			ps.setString(2, req.getParameter("password"));
 			ps.setString(3, req.getParameter("firstname"));
