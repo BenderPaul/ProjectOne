@@ -101,8 +101,7 @@ public class ReimbursementDao implements DaoContract<Reimbursement,Integer> {
 	public int createNewReimb(HttpServletRequest req, HttpServletResponse resp, int EmployeeId) {
 		String sqlQuery = "call user_submitted_claim(?,?,?,?,?)";
 		try(Connection conn = DriverManager.getConnection("jdbc:postgresql://revature-db1.cpvgxtqimmru.us-west-2.rds.amazonaws.com:5432/postgres?currentSchema=projectone","revature", "revature")){
-
-				PreparedStatement ps = conn.prepareStatement(sqlQuery);
+			PreparedStatement ps = conn.prepareStatement(sqlQuery);
 			ps.setBigDecimal(1, BigDecimal.valueOf(Double.parseDouble(req.getParameter("reimbursementAmount"))));
 			ps.setDate(2, (Date.valueOf(LocalDate.parse(req.getParameter("reimb_submitted")))));
 			ps.setString(3, req.getParameter("reimb_description"));

@@ -73,7 +73,7 @@ function renderTable(reimbursements) {
 
 //document.getElementById("claimSubmit").addEventListener('click', addReimbursement);
 
- fetch('http://localhost:8080/Project1/openreimbs.json', {
+ fetch('http://52.42.213.40:8082/Project1/openreimbs.json', {
   	body: JSON.stringify(),
   	method: 'post',
  	mode: "no-cors",
@@ -81,5 +81,4 @@ function renderTable(reimbursements) {
  		origin: 'localhost'
  	} 
   })
-  .then((r)=>r.json())
-  .then((reimbursements) => renderTable(reimbursements));
+  .then((r)=>r.json()).then((reimbursements) => renderTable(reimbursements));
