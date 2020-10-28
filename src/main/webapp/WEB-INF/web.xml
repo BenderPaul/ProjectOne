@@ -17,10 +17,14 @@
 	<servlet-class>com.web.servlet.DataServlet</servlet-class>
 	</servlet> -->
 
+	 <servlet-mapping>
+		<servlet-name>IndirectServlet</servlet-name>
+		<url-pattern>/logout</url-pattern>
+	</servlet-mapping> 
 	<servlet-mapping>
 		<servlet-name>IndirectServlet</servlet-name>
-		<url-pattern>/*/redirect</url-pattern>
-	</servlet-mapping>
+		<url-pattern>/login</url-pattern>
+	</servlet-mapping> 
 	
 	<!-- <servlet-mapping>
 	<servlet-name>DataServlet</servlet-name>

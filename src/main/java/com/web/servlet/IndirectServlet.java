@@ -3,6 +3,7 @@ package com.web.servlet;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,7 +14,6 @@ import com.web.repo.UserDao;
 import com.web.service.ReimbursementService;
 import com.web.service.UserService;
 
-@SuppressWarnings("serial")
 public class IndirectServlet extends HttpServlet {
 	
 	
@@ -24,6 +24,15 @@ public class IndirectServlet extends HttpServlet {
 	 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		switch(req.getRequestURI()) {
+		case "/logout.redirect":
+			resp.sendRedirect("Project1");
+			break;
+		case "/newreimb.redirect":
+			resp.sendRedirect("Webcode/html/newreimb.html");
+			break;
+		}
+		
 		resp.sendRedirect("WebCode/html/login.html");
 	}
 	

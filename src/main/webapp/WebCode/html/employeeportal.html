@@ -80,7 +80,7 @@
 
 <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="#">Dads 4 Hire</a>
+        <a class="navbar-brand" href="/logout.redirect">Dads 4 Hire</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
             aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -89,7 +89,7 @@
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" onclick="document.location='/Project1/WebCode/html/index.html'">Logout</a>
+                    <a class="nav-link" action="/Project1/logout">Logout</a>
                 </li>
 
             </ul>
@@ -103,12 +103,12 @@
         </div>
         <div class="buttonContainer">
             <div>
-                <button type="button" class="btn btn-primary btn-lg" onclick="document.location='/Project1/WebCode/html/newreimb.html'">submit new reimbursement</button>
+                <button type="button" class="btn btn-primary btn-lg" action = "/newreimb.redirect">submit new reimbursement</button>
             </div>
         </div>
 
         <div class="reimbtable">
-            <table action = "/Project1/all.json" class="table" id="Reimbursements">
+            <table action = "/all.json" class="table" id="Reimbursements">
                 <thead class="thead-dark">
                 	<tr>
                     <th scope ="col">Reimbursement ID</th>
