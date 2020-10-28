@@ -2,6 +2,9 @@ package com.web.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import com.web.model.User;
 import com.web.repo.UserDao;
 
@@ -47,5 +50,8 @@ public class UserService {
 	}
 	public int getEmployeeId(String firstname, String lastname) {
 		return ud.getEmployeeId(firstname, lastname);
+	}
+	public int create(HttpServletRequest req, HttpServletResponse resp) {
+		return ud.create(req, resp);
 	}
 }

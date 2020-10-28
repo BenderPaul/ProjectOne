@@ -14,15 +14,39 @@ function renderTable(reimbursements) {
 		const acptButton = document.createElement("td");
 		const denyButton = document.createElement("td");
 
+		let subd = new Date(reimb.submittedDate);
+		let resd = new Date(reimb.resolvedDate);
+		let stat;
+		let type;
+			if (reimb.reimbursementStatusId === 1){
+				stat = "Submitted"
+			}
+			if (reimb.reimbursementStatusId === 2){
+				stat = "Pending"
+			}
+			if (reimb.reimbursementStatusId === 3){
+				stat = "Approved"
+			}
+			if (reimb.reimbursementStatusId === 4){
+				stat = "Denied"
+			}
+			if (reimb.reimbursementTypeId === 1){
+				type = "Purchase"
+			}
+			if (reimb.reimbursementTypeId === 2){
+				type = "Robbery"
+			}
+
+
 		IDTd.innerText = reimb.reimbursementId;
 		amountTd.innerText = reimb.reimbursementAmount;
-		subDateTd.innerText = reimb.submittedDate;
-		resolvedateTd.innerText = reimb.resolvedDate;
+		subDateTd.textContent = subd.toLocaleDateString();
+		resolvedateTd.textContent = resd.toLocaleDateString();
 		descriptionTd.innerText = reimb.description;
 		authorTd.innerText = reimb.reimbursementAuthor;
-		resolverTd.innerText = reimb.reimbursementResolver;
-		statusTd.innerText = reimb.reimbursementStatusId;
-		typeTd.innerText = reimb.reimbursementTypeId;
+		resolverTd.innerText = "2";
+		statusTd.innerText = stat;
+		typeTd.innerText = type;
 		acptButton.innerHTML = '<input type="button" class="btn btn-outline-success"></input>';
 		denyButton.innerHTML = '<input type="button" class="btn btn-outline-danger"></input>';
 

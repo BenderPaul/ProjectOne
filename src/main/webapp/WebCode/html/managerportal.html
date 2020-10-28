@@ -89,7 +89,7 @@
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="redirect">Logout</a>
+                    <a class="nav-link" onclick="document.location='/Project1/WebCode/html/index.html'">Logout</a>
                 </li>
 
             </ul>
@@ -103,7 +103,11 @@
         </div>
         <div class="buttonContainer">
             <div>
-                <button type="button" class="btn btn-primary btn-lg" onclick="document.location='/Project1/WebCode/html/newreimb.html'">View Reimbursement History</button>
+                <button type="button" class="btn btn-primary btn-lg" onclick="document.location='/Project1/WebCode/html/viewhistory.html'">View Reimbursement History</button>
+            </div>
+            <br>
+            <div>
+                <button type="button" class="btn btn-primary btn-lg" onclick="document.location='/Project1/WebCode/html/employeeregister.html'">Register New Dad</button>
             </div>
         </div>
 
@@ -116,8 +120,8 @@
                     <th scope ="col">Submitted Date</th>
                     <th scope ="col">Resolved Date</th>
                     <th scope ="col">Description</th>
-                    <th scope ="col">Author</th>
-                    <th scope ="col">Resolver</th>
+                    <th scope ="col">Author ID</th>
+                    <th scope ="col">Resolver ID</th>
                     <th scope ="col">Status</th>
                     <th scope ="col">Type</th>
                     <th scope ="col">Accept</th>

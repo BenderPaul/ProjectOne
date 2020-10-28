@@ -23,7 +23,7 @@ sdfgsdfhgsdfhfdghdfgh
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" action="Project1/redirect">Logout</a>
+                    <a class="nav-link" onclick="document.location='/Project1/WebCode/html/index.html'">Logout</a>
                 </li>
 
             </ul>
@@ -36,7 +36,33 @@ sdfgsdfhgsdfhfdghdfgh
         <br>
         <br>
         <br>
-        <form action="/Project1/reimb.json" method="POST">
+        <form>
+            <div class="form-group">
+              <label for="newemail">Email address</label>
+              <input type="email" class="form-control" id="newemail" aria-describedby="emailHelp">
+            </div>
+            <div class="form-group">
+              <label for="First Name">First Name</label>
+              <input type="password" class="form-control" id="firstname">
+            </div>
+            <div class="form-group">
+                <label for="">Last Name</label>
+                <input type="email" class="form-control" id="lastname">
+              </div>
+              <div class="form-group">
+                <label for="newemail">Username</label>
+                <input type="email" class="form-control" id="username">
+              </div>
+              <div class="form-group">
+                <label for="newemail">Password</label>
+                <input type="email" class="form-control" id="password">
+              </div>
+            
+            <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+
+        <!-- <form action="/Project1/reimb.json" method="POST">
             <div class="container">
                 <input type="text" id="reimb_amount" placeholder="Reimbursement Amount" name = "reimbursementAmount" required>
                 <input type="text" id="reimb_submitted" placeholder="Submit Date" name = "reimb_submitted" required>
@@ -46,7 +72,7 @@ sdfgsdfhgsdfhfdghdfgh
                 <input type="number" id="reimb_type_id" placeholder="Claim type" name="reimb_type_id" required>
                 <button id="claimSubmit">Submit Claim</button>
             </div>
-        </form>
+        </form> -->
 
     </main>
     

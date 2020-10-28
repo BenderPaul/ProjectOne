@@ -11,6 +11,7 @@ import com.web.controller.ReimbDataController;
 import com.web.model.User;
 import com.web.repo.UserDao;
 import com.web.service.ReimbursementService;
+import com.web.service.UserService;
 
 @SuppressWarnings("serial")
 public class IndirectServlet extends HttpServlet {
@@ -32,16 +33,12 @@ public class IndirectServlet extends HttpServlet {
 			new ReimbDataController().sendAllData(resp);
 			break;
 		case "/Project1/reimb.json":
-			System.out.println("If this works well go this route" + req.getParameter("reimbursementId"));
-			
-			
-			System.out.println(req + "The request");
-			System.out.println(resp + "the response");
 			new ReimbursementService().createNewReimb(req, resp, req.getParameter("user_first_name"), req.getParameter("user_last_name"));
-			//System.out.println("This is after the reimbursement controller is done");
 			resp.sendRedirect("WebCode/html/employeeportal.html");
-			System.out.println("This is after the redirect?");
 			break;
+		case "/Project1/newdad.json":
+			System.out.println("we're calling all dads, here");
+			new UserService().create(req, resp);
 		}
 	}
 	

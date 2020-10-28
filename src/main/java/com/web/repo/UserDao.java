@@ -7,6 +7,9 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import com.web.config.EnvironmentConnectionUtil;
 import com.web.model.User;
 
@@ -100,6 +103,22 @@ public class UserDao implements DaoContract<User, Integer> {
 			e.printStackTrace();
 		}
 		return employeeId;
+	}
+	
+	public int create(HttpServletRequest req, HttpServletResponse resp) {
+		String sqlQuery = "insert into ers_users (ers_users_id, ers_username, ers_password, user_first_name, user_last_name, user_email, user_role_id) values (default, ?, ?, ?, ?, ?, 1)";
+		try (Connection conn = EnvironmentConnectionUtil.getInstance().getConnection(); PreparedStatement ps = conn.prepareStatement(sqlQuery)){
+			ps.setString(1, req.getParameter("username"));
+			ps.setString(2, req.getParameter("password"));
+			ps.setString(3, req.getParameter("firstname"));
+			ps.setString(4, req.getParameter("lastname"));
+			ps.setString(5, req.getParameter("newemail"));
+			ps.execute();
+			System.out.println("The dad query hath been called");
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return 1;
 	}
 }
 
