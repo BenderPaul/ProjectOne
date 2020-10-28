@@ -11,44 +11,16 @@ function renderTable(reimbursements) {
 		const resolverTd = document.createElement("td");
 		const statusTd = document.createElement("td");
 		const typeTd = document.createElement("td");
-		const acptButton = document.createElement("td");
-		const denyButton = document.createElement("td");
-
-		let subd = new Date(reimb.submittedDate);
-		let resd = new Date(reimb.resolvedDate);
-		let stat;
-		let type;
-			if (reimb.reimbursementStatusId === 1){
-				stat = "Submitted"
-			}
-			if (reimb.reimbursementStatusId === 2){
-				stat = "Pending"
-			}
-			if (reimb.reimbursementStatusId === 3){
-				stat = "Approved"
-			}
-			if (reimb.reimbursementStatusId === 4){
-				stat = "Denied"
-			}
-			if (reimb.reimbursementTypeId === 1){
-				type = "Purchase"
-			}
-			if (reimb.reimbursementTypeId === 2){
-				type = "Robbery"
-			}
-
 
 		IDTd.innerText = reimb.reimbursementId;
 		amountTd.innerText = reimb.reimbursementAmount;
-		subDateTd.textContent = subd.toLocaleDateString();
-		resolvedateTd.textContent = resd.toLocaleDateString();
+		subDateTd.innerText = reimb.submittedDate;
+		resolvedateTd.innerText = reimb.resolvedDate;
 		descriptionTd.innerText = reimb.description;
 		authorTd.innerText = reimb.reimbursementAuthor;
-		resolverTd.innerText = "2";
-		statusTd.innerText = stat;
-		typeTd.innerText = type;
-		acptButton.innerHTML = '<input type="button" class="btn btn-outline-success"></input>';
-		denyButton.innerHTML = '<input type="button" class="btn btn-outline-danger"></input>';
+		resolverTd.innerText = reimb.reimbursementResolver;
+		statusTd.innerText = reimb.reimbursementStatusId;
+		typeTd.innerText = reimb.reimbursementTypeId;
 
 		tr.append(IDTd);
 		tr.append(amountTd);
@@ -59,8 +31,6 @@ function renderTable(reimbursements) {
 		tr.append(resolverTd);
 		tr.append(statusTd);
 		tr.append(typeTd);
-		tr.append(acptButton);
-		tr.append(denyButton);
 
 		document.getElementById("reimbTableBody").append(tr);
 	}

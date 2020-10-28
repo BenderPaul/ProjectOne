@@ -74,6 +74,7 @@
             display: grid;
             grid-template-columns: auto auto auto;
         }
+
     </style>
 </head>
 
@@ -99,39 +100,61 @@
     <main role="main" class="container">
 
         <div class="frontpage">
-            <h1 class="title">Employee Portal</h1>
+            <h1 class="title">Reimbursement History</h1>
         </div>
         <div class="buttonContainer">
             <div>
-                <button type="button" class="btn btn-primary btn-lg" onclick="document.location='/Project1/WebCode/html/newreimb.html'">submit new reimbursement</button>
+                <button type="button" class="btn btn-primary btn-lg"
+                    onclick="document.location='/Project1/WebCode/html/managerportal.html'">Back</button>
             </div>
         </div>
 
         <div class="reimbtable">
-            <table action = "/Project1/all.json" class="table" id="Reimbursements">
+            <input type="text" id="myInput" onkeyup="search()" placeholder="Search Descriptions" title="Type in a name">
+            <table action="/Project1/all.json" class="table" id="Reimbursements">
                 <thead class="thead-dark">
-                	<tr>
-                    <th scope ="col">Reimbursement ID</th>
-                    <th scope ="col">Reimbursement Amount</th>
-                    <th scope ="col">Submitted Date</th>
-                    <th scope ="col">Resolved Date</th>
-                    <th scope ="col">Description</th>
-                    <th scope ="col">Author</th>
-                    <th scope ="col">Resolver</th>
-                    <th scope ="col">Status</th>
-                    <th scope ="col">Type</th>
+                    <tr>
+                        <th class="thead" scope="col">Reimbursement ID</th>
+                        <th class="thead" scope="col">Reimbursement Amount</th>
+                        <th class="thead" scope="col">Submitted Date</th>
+                        <th class="thead" scope="col">Resolved Date</th>
+                        <th class="thead" scope="col">Description</th>
+                        <th class="thead" scope="col">Author ID</th>
+                        <th class="thead" scope="col">Resolver ID</th>
+                        <th class="thead" scope="col">Status</th>
+                        <th class="thead" scope="col">Type</th>
                     </tr>
                 </thead>
-                
+
                 <tbody id="reimbTableBody"></tbody>
-            
+
             </table>
-       
+
         </div>
 
 
 
     </main><!-- /.container -->
+    <script>
+        function search() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("Reimbursements");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[4];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
     <script src="../js/network.js"></script>
     <script src="../js/dom.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

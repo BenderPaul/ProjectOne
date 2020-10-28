@@ -53,20 +53,25 @@ public class ReimbursementController {
 		return rs.delete(i);
 	}
 	
-	public void create(HttpServletRequest req, HttpServletResponse res) throws IOException{
-		try {
-			//System.out.println("Input stream= " + req.getParameter("reimbursementId"));
-			
-			Reimbursement r = new Reimbursement(1, BigDecimal.valueOf(Integer.parseInt(req.getParameter("reimbursementAmount"))), req.getParameter("submittedDate"), "2000=10-10", req.getParameter("description"),us.getEmployeeId(req.getParameter("user_first_name"), req.getParameter("user_last_name")), 1, 1, Integer.parseInt(req.getParameter("reimb_type_id")));
-
-			//Reimbursement r = new ObjectMapper().readValue(req.getInputStream(), Reimbursement.class);
-			
-			int reimbResult = rs.create(r);
-			System.out.println("If this is one then it might have worked: " + reimbResult);
-			res.getWriter().println("Reimbursement successfully added");
-		}catch (IOException e){
-			e.printStackTrace();
-			res.getWriter().println("Something went wrong");
-		}
-	}
+	/*
+	 * public void create(HttpServletRequest req, HttpServletResponse res) throws
+	 * IOException{ try { //System.out.println("Input stream= " +
+	 * req.getParameter("reimbursementId"));
+	 * 
+	 * Reimbursement r = new Reimbursement(1,
+	 * BigDecimal.valueOf(Integer.parseInt(req.getParameter("reimbursementAmount")))
+	 * , req.getParameter("submittedDate"), "2000=10-10",
+	 * req.getParameter("description"),us.getEmployeeId(req.getParameter(
+	 * "user_first_name"), req.getParameter("user_last_name")), 1, 1,
+	 * Integer.parseInt(req.getParameter("reimb_type_id")));
+	 * 
+	 * //Reimbursement r = new ObjectMapper().readValue(req.getInputStream(),
+	 * Reimbursement.class);
+	 * 
+	 * int reimbResult = rs.create(r);
+	 * System.out.println("If this is one then it might have worked: " +
+	 * reimbResult); res.getWriter().println("Reimbursement successfully added");
+	 * }catch (IOException e){ e.printStackTrace();
+	 * res.getWriter().println("Something went wrong"); } }
+	 */
 }
