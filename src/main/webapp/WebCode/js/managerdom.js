@@ -23,8 +23,8 @@ function renderTable(reimbursements) {
 		resolverTd.innerText = reimb.reimbursementResolver;
 		statusTd.innerText = reimb.reimbursementStatusId;
 		typeTd.innerText = reimb.reimbursementTypeId;
-		acptButton.innerHTML = '<input type="button"></input>';
-		denyButton.innerHTML = '<input type="button"></input>';
+		acptButton.innerHTML = '<input type="button" class="btn btn-outline-success"></input>';
+		denyButton.innerHTML = '<input type="button" class="btn btn-outline-danger"></input>';
 
 		tr.append(IDTd);
 		tr.append(amountTd);
