@@ -1,6 +1,6 @@
 
 
-
+/*
 async function addReimbursement(){
     const reimbursement = {
        reimbursementId: 100,
@@ -20,4 +20,4 @@ async function addReimbursement(){
    }); 
 };
 
-//document.getElementById("claimSubmit").onclick = addReimbursement;
+//document.getElementById("claimSubmit").onclick = addReimbursement;*/

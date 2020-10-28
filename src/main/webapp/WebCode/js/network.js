@@ -1,4 +1,4 @@
-function ajaxGetRequest(url, expression, method = "get"){
+/*function ajaxGetRequest(url, expression, method = "get"){
     //step 1
     const xhr = new XMLHttpRequest();
 
@@ -29,3 +29,4 @@ async function asyncFetch(url, expression){
     expression(json);
 }
 
+*/
