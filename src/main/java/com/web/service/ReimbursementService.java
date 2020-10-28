@@ -2,8 +2,12 @@ package com.web.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import com.web.model.Reimbursement;
 import com.web.repo.ReimbursementDao;
+import com.web.repo.UserDao;
 
 public class ReimbursementService {
 
@@ -46,8 +50,10 @@ public class ReimbursementService {
 		return rd.getReimbType(t);
 	}
 	
-	public int createNewReimb(Reimbursement t, String firstname, String lastname) {
-		return rd.createNewReimb(t, firstname, lastname);
+	public int createNewReimb(HttpServletRequest req, HttpServletResponse resp, String firstname, String lastname) {
+		UserDao ud = new UserDao();
+		int empId = ud.getEmployeeId(firstname, lastname);		
+		return rd.createNewReimb(req, resp, empId);
 	}
 
 }

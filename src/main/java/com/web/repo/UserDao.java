@@ -85,6 +85,22 @@ public class UserDao implements DaoContract<User, Integer> {
 		}
 		return title;	
 	}
+	
+	public int getEmployeeId(String firstname, String lastName) {
+		int employeeId = 0;
+		String sql = "select ers_users_id from ers_users where user_first_name = ? and user_last_name = ?";
+		try (Connection conn = EnvironmentConnectionUtil.getInstance().getConnection(); PreparedStatement ps = conn.prepareStatement(sql)){
+			ps.setString(1, firstname);
+			ps.setString(2, lastName);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				employeeId = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return employeeId;
+	}
 }
 
 

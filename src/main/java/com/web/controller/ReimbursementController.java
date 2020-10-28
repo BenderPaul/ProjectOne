@@ -1,14 +1,15 @@
 package com.web.controller;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.web.model.Reimbursement;
 import com.web.service.ReimbursementService;
+import com.web.service.UserService;
 
 public class ReimbursementController {
 
@@ -22,7 +23,7 @@ public class ReimbursementController {
 	 */
 	
 	private ReimbursementService rs;
-	
+	private UserService us;
 	public ReimbursementController() {
 		this(new ReimbursementService());
 	}
@@ -54,8 +55,14 @@ public class ReimbursementController {
 	
 	public void create(HttpServletRequest req, HttpServletResponse res) throws IOException{
 		try {
-			Reimbursement r = new ObjectMapper().readValue(req.getInputStream(), Reimbursement.class);
+			//System.out.println("Input stream= " + req.getParameter("reimbursementId"));
+			
+			Reimbursement r = new Reimbursement(1, BigDecimal.valueOf(Integer.parseInt(req.getParameter("reimbursementAmount"))), req.getParameter("submittedDate"), "2000=10-10", req.getParameter("description"),us.getEmployeeId(req.getParameter("user_first_name"), req.getParameter("user_last_name")), 1, 1, Integer.parseInt(req.getParameter("reimb_type_id")));
+
+			//Reimbursement r = new ObjectMapper().readValue(req.getInputStream(), Reimbursement.class);
+			
 			int reimbResult = rs.create(r);
+			System.out.println("If this is one then it might have worked: " + reimbResult);
 			res.getWriter().println("Reimbursement successfully added");
 		}catch (IOException e){
 			e.printStackTrace();

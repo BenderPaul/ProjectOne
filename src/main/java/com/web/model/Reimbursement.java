@@ -2,14 +2,15 @@ package com.web.model;
 
 
 import java.math.BigDecimal;
+import java.sql.Date;
 import java.sql.Timestamp;
 
 public class Reimbursement {
 
 	private int reimbursementId;
 	private BigDecimal reimbursementAmount;
-	private String submittedDate;
-	private String resolvedDate;
+	private Date submittedDate;
+	private Date resolvedDate;
 	private String description;
 //	private InputStream reciept;
 	private int reimbursementAuthor;
@@ -20,17 +21,21 @@ public class Reimbursement {
 
 
 
-	public Reimbursement(int reimbursementId, BigDecimal reimbursementAmount,
-			String submittedDate, String resolvedDate, String description, int reimbursementAuthor, int reimbursementResolver, int
-			reimbursementStatusId, int reimbursementTypeId) { super();
-			this.reimbursementId = reimbursementId; 
-			this.reimbursementAmount =
-					reimbursementAmount; this.submittedDate = submittedDate; this.resolvedDate =
-					resolvedDate; this.description = description;
-					this.reimbursementAuthor = reimbursementAuthor; this.reimbursementResolver =
-							reimbursementResolver; this.reimbursementStatusId = reimbursementStatusId;
-							this.reimbursementTypeId = reimbursementTypeId; }
 
+	public Reimbursement(int reimbursementId, BigDecimal reimbursementAmount, Date submittedDate, Date resolvedDate,
+			String description, int reimbursementAuthor, int reimbursementResolver, int reimbursementStatusId,
+			int reimbursementTypeId) {
+		super();
+		this.reimbursementId = reimbursementId;
+		this.reimbursementAmount = reimbursementAmount;
+		this.submittedDate = submittedDate;
+		this.resolvedDate = resolvedDate;
+		this.description = description;
+		this.reimbursementAuthor = reimbursementAuthor;
+		this.reimbursementResolver = reimbursementResolver;
+		this.reimbursementStatusId = reimbursementStatusId;
+		this.reimbursementTypeId = reimbursementTypeId;
+	}
 
 	public Reimbursement() {
 		super();
@@ -68,21 +73,27 @@ public class Reimbursement {
 		this.reimbursementAmount = reimbursementAmount;
 	}
 
-	public Timestamp getSubmittedDate() {
-		return Timestamp.valueOf(submittedDate);
+	
+
+	public Date getSubmittedDate() {
+		return submittedDate;
 	}
 
-	public void setSubmittedDate(String submittedDate) {
+
+	public void setSubmittedDate(Date submittedDate) {
 		this.submittedDate = submittedDate;
 	}
 
-	public Timestamp getResolvedDate() {
-		return Timestamp.valueOf(resolvedDate);
+
+	public Date getResolvedDate() {
+		return resolvedDate;
 	}
 
-	public void setResolvedDate(String resolvedDate) {
+
+	public void setResolvedDate(Date resolvedDate) {
 		this.resolvedDate = resolvedDate;
 	}
+
 
 	public String getDescription() {
 		return description;

@@ -11,6 +11,8 @@ function renderTable(reimbursements) {
 		const resolverTd = document.createElement("td");
 		const statusTd = document.createElement("td");
 		const typeTd = document.createElement("td");
+		const acptButton = document.createElement("td");
+		const denyButton = document.createElement("td");
 
 		IDTd.innerText = reimb.reimbursementId;
 		amountTd.innerText = reimb.reimbursementAmount;
@@ -21,6 +23,8 @@ function renderTable(reimbursements) {
 		resolverTd.innerText = reimb.reimbursementResolver;
 		statusTd.innerText = reimb.reimbursementStatusId;
 		typeTd.innerText = reimb.reimbursementTypeId;
+		acptButton.innerHTML = '<input type="button"></input>';
+		denyButton.innerHTML = '<input type="button"></input>';
 
 		tr.append(IDTd);
 		tr.append(amountTd);
@@ -31,6 +35,8 @@ function renderTable(reimbursements) {
 		tr.append(resolverTd);
 		tr.append(statusTd);
 		tr.append(typeTd);
+		tr.append(acptButton);
+		tr.append(denyButton);
 
 		document.getElementById("reimbTableBody").append(tr);
 	}

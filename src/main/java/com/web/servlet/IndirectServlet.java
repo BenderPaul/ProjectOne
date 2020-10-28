@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.web.controller.ReimbDataController;
-import com.web.controller.ReimbursementController;
 import com.web.model.User;
 import com.web.repo.UserDao;
+import com.web.service.ReimbursementService;
 
 @SuppressWarnings("serial")
 public class IndirectServlet extends HttpServlet {
@@ -23,24 +23,24 @@ public class IndirectServlet extends HttpServlet {
 	 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		//resp.setContentType("WebCode/html/index.html");
-		//PrintWriter pw = resp.getWriter();
 		resp.sendRedirect("WebCode/html/login.html");
-		
-		//resp.sendRedirect("WebCode/html/login.html");
-		//req.getContextPath();
-		//req.getRequestDispatcher("WebCode/html/login.html").forward(req,resp);
 	}
 	
 	public void data(HttpServletRequest req, HttpServletResponse resp) throws IOException{
 		switch(req.getRequestURI()) {
 		case "/Project1/all.json":
-			System.out.println("yay?");
 			new ReimbDataController().sendAllData(resp);
 			break;
 		case "/Project1/reimb.json":
-			new ReimbursementController().create(req, resp);
+			System.out.println("If this works well go this route" + req.getParameter("reimbursementId"));
+			
+			
+			System.out.println(req + "The request");
+			System.out.println(resp + "the response");
+			new ReimbursementService().createNewReimb(req, resp, req.getParameter("user_first_name"), req.getParameter("user_last_name"));
+			//System.out.println("This is after the reimbursement controller is done");
+			resp.sendRedirect("WebCode/html/employeeportal.html");
+			System.out.println("This is after the redirect?");
 			break;
 		}
 	}

@@ -1,13 +1,18 @@
 package com.web.repo;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
-import java.sql.DriverManager;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import com.web.config.EnvironmentConnectionUtil;
 import com.web.model.Reimbursement;
@@ -22,9 +27,8 @@ public class ReimbursementDao implements DaoContract<Reimbursement,Integer> {
 			String sql = "select * from ers_reimbursement";
 			ResultSet rs = s.executeQuery(sql);
 			while(rs.next()) {
-				reimb.add(new Reimbursement(rs.getInt(1), rs.getBigDecimal(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getInt(7), rs.getInt(8), rs.getInt(9)));
+				reimb.add(new Reimbursement(rs.getInt(1), rs.getBigDecimal(2), rs.getDate(3), rs.getDate(4), rs.getString(5), rs.getInt(6), rs.getInt(7), rs.getInt(8), rs.getInt(9)));
 			}
-			System.out.println(reimb.toString());
 			rs.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -55,15 +59,15 @@ public class ReimbursementDao implements DaoContract<Reimbursement,Integer> {
 		return 0;
 	}
 
-	public int createNewReimb(Reimbursement t, String firstname, String lastname) {
-		String sqlQuery = "call user_submitted_claim(?,?,?,?,?,?)";
+	@SuppressWarnings("deprecation")
+	public int createNewReimb(HttpServletRequest req, HttpServletResponse resp, int EmployeeId) {
+		String sqlQuery = "call user_submitted_claim(?,?,?,?,?)";
 		try (Connection conn = EnvironmentConnectionUtil.getInstance().getConnection(); PreparedStatement ps = conn.prepareStatement(sqlQuery)){
-			ps.setBigDecimal(1, t.getReimbursementAmount());
-			ps.setTimestamp(2, t.getSubmittedDate());
-			ps.setString(3, t.getDescription());
-			ps.setString(4, firstname);
-			ps.setString(5, lastname);
-			ps.setInt(6, t.getReimbursementTypeId());
+			ps.setBigDecimal(1, BigDecimal.valueOf(Double.parseDouble(req.getParameter("reimbursementAmount"))));
+			ps.setDate(2, (Date.valueOf(LocalDate.parse(req.getParameter("reimb_submitted")))));
+			ps.setString(3, req.getParameter("reimb_description"));
+			ps.setInt(4, Integer.parseInt(req.getParameter("reimb_type_id")));
+			ps.setInt(5, EmployeeId);
 			ps.execute();
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -76,8 +80,8 @@ public class ReimbursementDao implements DaoContract<Reimbursement,Integer> {
 		String sqlQuery = "insert into ers_reimbursement (reimb_id, reimb_amount, reimb_submitted, reimb_resolved, reimb_description, reimb_author, reimb_resolver, reimb_status_id, reimb_type_id) values (default,?,?,?,?,?,?,?,?)";
 		try (Connection conn = EnvironmentConnectionUtil.getInstance().getConnection(); PreparedStatement ps = conn.prepareStatement(sqlQuery)){
 			ps.setBigDecimal(1, t.getReimbursementAmount());
-			ps.setTimestamp(2, t.getSubmittedDate());
-			ps.setTimestamp(3, t.getResolvedDate());
+			ps.setDate(2, t.getSubmittedDate());
+			ps.setDate(3, t.getResolvedDate());
 			ps.setString(4, t.getDescription());
 			ps.setInt(5, t.getReimbursementAuthor());
 			ps.setInt(6, t.getReimbursementResolver());

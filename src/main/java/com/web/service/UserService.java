@@ -45,4 +45,7 @@ public class UserService {
 	public String getJobTitle(User t) {
 		return ud.getJobTitle(t);
 	}
+	public int getEmployeeId(String firstname, String lastname) {
+		return ud.getEmployeeId(firstname, lastname);
+	}
 }

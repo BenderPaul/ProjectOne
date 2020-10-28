@@ -27,7 +27,8 @@ public class ReimbDataController {
 		List<Reimbursement> reimb = rs.findAll();
 		try {
 			res.getWriter().println(new ObjectMapper().writeValueAsString(reimb));
-		} catch (IOException e) {e.printStackTrace();}
+		} catch (IOException e) {
+			e.printStackTrace();
+			}
 	}
-	
 }
