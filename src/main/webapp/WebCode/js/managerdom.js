@@ -50,8 +50,8 @@ function renderTable(reimbursements) {
 		resolverTd.innerText = "2";
 		statusTd.innerText = stat;
 		typeTd.innerText = type;
-		acptButton.innerHTML = '<td><form method="POST" action="/Project1/approve.json"><input type="hidden" class="ReimbursementId"/><button type="submit" class="btn btn-outline-success"></button></form></td>';
-		denyButton.innerHTML = '<td><form method="POST" action="/Project1/deny.json"><input type="hidden" class="ReimbursementId"/><button type="submit" class="btn btn-outline-danger"></button></form></td>';
+		acptButton.innerHTML = '<td><form method="POST" action="/Project1/approve.json"><input type="hidden" value="null" class="ReimbursementId"/><button type="submit" class="btn btn-outline-success"></button></form></td>';
+		denyButton.innerHTML = '<td><form method="POST" action="/Project1/deny.json"><input type="hidden" value="null" class="ReimbursementId"/><button type="submit" class="btn btn-outline-danger"></button></form></td>';
 
 		tr.append(IDTd);
 		tr.append(amountTd);
@@ -70,7 +70,7 @@ function renderTable(reimbursements) {
 		
 		let buttons = document.getElementsByClassName("ReimbursementId");
 		for (var i = 0; i < buttons.length; i++){
-			if (buttons[i].value = null){
+			if (buttons[i].value == "null"){
 				buttons[i].value = IDTd.innerText;
 			}
 		}
