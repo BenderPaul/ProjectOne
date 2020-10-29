@@ -48,6 +48,7 @@ public class IndirectServlet extends HttpServlet {
 		case "/Project1/newdad.json":
 			System.out.println("we're calling all dads, here");
 			new UserService().create(req, resp);
+			resp.sendRedirect("WebCode/html/managerportal.html");
 			break;
 		case "/Project1/history.json":
 			System.out.println("Reimbursement History Servlet called");
