@@ -112,6 +112,24 @@ public class UserDao implements DaoContract<User, Integer> {
 		return employeeId;
 	}
 	
+	public int getEmployeeIdByLogin(String firstname, String lastName) {
+		int employeeId = 0;
+		String sql = "select ers_users_id from ers_users where ers_username = ? and ers_password = ?";
+		try(Connection conn = DriverManager.getConnection("jdbc:postgresql://revature-db1.cpvgxtqimmru.us-west-2.rds.amazonaws.com:5432/postgres?currentSchema=projectone","revature", "revature")){
+ 
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, firstname);
+			ps.setString(2, lastName);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				employeeId = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return employeeId;
+	}
+	
 	public int create(HttpServletRequest req, HttpServletResponse resp) {
 		String sqlQuery = "insert into ers_users (ers_users_id, ers_username, ers_password, user_first_name, user_last_name, user_email, user_role_id) values (default, ?, ?, ?, ?, ?, 1)";
 		try(Connection conn = DriverManager.getConnection("jdbc:postgresql://revature-db1.cpvgxtqimmru.us-west-2.rds.amazonaws.com:5432/postgres?currentSchema=projectone","revature", "revature")){

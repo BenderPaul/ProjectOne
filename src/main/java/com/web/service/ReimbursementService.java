@@ -27,8 +27,10 @@ public class ReimbursementService {
 	public List<Reimbursement> findOpenReimbs(){
 		return rd.findOpenReimbs();
 	}
-	public List<Reimbursement> findAll() {
-		return rd.findAll();
+	public List<Reimbursement> findAll(String username, String password) {
+		UserDao temp = new UserDao();
+		int empId = temp.getEmployeeIdByLogin(username, password);
+		return rd.findAll(empId);
 	}
 	
 	public Reimbursement findById(Integer i) {

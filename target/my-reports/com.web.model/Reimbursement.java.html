@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Reimbursement.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ProjectOne</a> &gt; <a href="index.source.html" class="el_package">com.web.model</a> &gt; <span class="el_source">Reimbursement.java</span></div><h1>Reimbursement.java</h1><pre class="source lang-java linenums">package com.web.model;
+
+
+import java.math.BigDecimal;
+import java.sql.Date;
+import java.sql.Timestamp;
+
+public class Reimbursement {
+
+	private int reimbursementId;
+	private BigDecimal reimbursementAmount;
+	private Date submittedDate;
+	private Date resolvedDate;
+	private String description;
+//	private InputStream reciept;
+	private int reimbursementAuthor;
+	private int reimbursementResolver;
+	private int reimbursementStatusId;
+	private int reimbursementTypeId;
+
+
+
+
+
+	public Reimbursement(int reimbursementId, BigDecimal reimbursementAmount, Date submittedDate, Date resolvedDate,
+			String description, int reimbursementAuthor, int reimbursementResolver, int reimbursementStatusId,
+			int reimbursementTypeId) {
+<span class="fc" id="L28">		super();</span>
+<span class="fc" id="L29">		this.reimbursementId = reimbursementId;</span>
+<span class="fc" id="L30">		this.reimbursementAmount = reimbursementAmount;</span>
+<span class="fc" id="L31">		this.submittedDate = submittedDate;</span>
+<span class="fc" id="L32">		this.resolvedDate = resolvedDate;</span>
+<span class="fc" id="L33">		this.description = description;</span>
+<span class="fc" id="L34">		this.reimbursementAuthor = reimbursementAuthor;</span>
+<span class="fc" id="L35">		this.reimbursementResolver = reimbursementResolver;</span>
+<span class="fc" id="L36">		this.reimbursementStatusId = reimbursementStatusId;</span>
+<span class="fc" id="L37">		this.reimbursementTypeId = reimbursementTypeId;</span>
+<span class="fc" id="L38">	}</span>
+
+	public Reimbursement() {
+<span class="nc" id="L41">		super();</span>
+		// TODO Auto-generated constructor stub
+<span class="nc" id="L43">	}</span>
+
+	public Reimbursement(int int1, BigDecimal bigDecimal, String string, String string2, String string3, String string4,
+<span class="nc" id="L46">			int int2, int int3, int int4, int int5) {</span>
+		// TODO Auto-generated constructor stub
+<span class="nc" id="L48">	}</span>
+
+
+	@Override
+	public String toString() {
+<span class="fc" id="L53">		return &quot;Reimbursement [reimbursementId=&quot; + reimbursementId + &quot;, reimbursementAmount=&quot; + reimbursementAmount</span>
+				+ &quot;, submittedDate=&quot; + submittedDate + &quot;, resolvedDate=&quot; + resolvedDate + &quot;, description=&quot; + description
+				+ &quot;, reimbursementAuthor=&quot; + reimbursementAuthor + &quot;, reimbursementResolver=&quot; + reimbursementResolver
+				+ &quot;, reimbursementStatusId=&quot; + reimbursementStatusId + &quot;, reimbursementTypeId=&quot; + reimbursementTypeId
+				+ &quot;]&quot;;
+	}
+
+	public int getReimbursementId() {
+<span class="fc" id="L61">		return reimbursementId;</span>
+	}
+
+	public void setReimbursementId(int reimbursementId) {
+<span class="fc" id="L65">		this.reimbursementId = reimbursementId;</span>
+<span class="fc" id="L66">	}</span>
+
+	public BigDecimal getReimbursementAmount() {
+<span class="fc" id="L69">		return reimbursementAmount;</span>
+	}
+
+	public void setReimbursementAmount(BigDecimal reimbursementAmount) {
+<span class="nc" id="L73">		this.reimbursementAmount = reimbursementAmount;</span>
+<span class="nc" id="L74">	}</span>
+
+	
+
+	public Date getSubmittedDate() {
+<span class="fc" id="L79">		return submittedDate;</span>
+	}
+
+
+	public void setSubmittedDate(Date submittedDate) {
+<span class="nc" id="L84">		this.submittedDate = submittedDate;</span>
+<span class="nc" id="L85">	}</span>
+
+
+	public Date getResolvedDate() {
+<span class="fc" id="L89">		return resolvedDate;</span>
+	}
+
+
+	public void setResolvedDate(Date resolvedDate) {
+<span class="nc" id="L94">		this.resolvedDate = resolvedDate;</span>
+<span class="nc" id="L95">	}</span>
+
+
+	public String getDescription() {
+<span class="fc" id="L99">		return description;</span>
+	}
+
+	public void setDescription(String description) {
+<span class="fc" id="L103">		this.description = description;</span>
+<span class="fc" id="L104">	}</span>
+
+	public int getReimbursementAuthor() {
+<span class="nc" id="L107">		return reimbursementAuthor;</span>
+	}
+
+	public void setReimbursementAuthor(int reimbursementAuthor) {
+<span class="nc" id="L111">		this.reimbursementAuthor = reimbursementAuthor;</span>
+<span class="nc" id="L112">	}</span>
+
+	public int getReimbursementResolver() {
+<span class="fc" id="L115">		return reimbursementResolver;</span>
+	}
+
+	public void setReimbursementResolver(int reimbursementResolver) {
+<span class="fc" id="L119">		this.reimbursementResolver = reimbursementResolver;</span>
+<span class="fc" id="L120">	}</span>
+
+	public int getReimbursementStatusId() {
+<span class="fc" id="L123">		return reimbursementStatusId;</span>
+	}
+
+	public void setReimbursementStatusId(int reimbursementStatusId) {
+<span class="fc" id="L127">		this.reimbursementStatusId = reimbursementStatusId;</span>
+<span class="fc" id="L128">	}</span>
+
+	public int getReimbursementTypeId() {
+<span class="fc" id="L131">		return reimbursementTypeId;</span>
+	}
+
+	public void setReimbursementTypeId(int reimbursementTypeId) {
+<span class="fc" id="L135">		this.reimbursementTypeId = reimbursementTypeId;</span>
+<span class="fc" id="L136">	}</span>
+
+
+	
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

@@ -42,9 +42,9 @@ public class ReimbDataController {
 		}		
 	}
 
-	public void sendAllData(HttpServletResponse res) {
+	public void sendAllData(HttpServletResponse res, String username, String password) {
 		res.setContentType("text/json");
-		List<Reimbursement> reimb = rs.findAll();
+		List<Reimbursement> reimb = rs.findAll(username, password);
 		try {
 			res.getWriter().println(new ObjectMapper().writeValueAsString(reimb));
 		} catch (IOException e) {

@@ -38,12 +38,29 @@ public class ReimbursementDao implements DaoContract<Reimbursement,Integer> {
 		return reimb;
 	}
 	
+	public List<Reimbursement> findAll(int id) {
+		List<Reimbursement> reimb = new LinkedList<>();
+		try(Connection conn = DriverManager.getConnection("jdbc:postgresql://revature-db1.cpvgxtqimmru.us-west-2.rds.amazonaws.com:5432/postgres?currentSchema=projectone","revature", "revature")){
+
+			Statement s = conn.createStatement();
+			String sql = "select * from ers_reimbursement where reimb_author=?";
+			ResultSet rs = s.executeQuery(sql);
+			while(rs.next()) {
+				reimb.add(new Reimbursement(rs.getInt(1), rs.getBigDecimal(2), rs.getDate(3), rs.getDate(4), rs.getString(5), rs.getInt(6), rs.getInt(7), rs.getInt(8), rs.getInt(9)));
+			}
+			rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return reimb;
+	}
+	
 	public List<Reimbursement> findAllNotPending() {
 		List<Reimbursement> reimb = new LinkedList<>();
 		try(Connection conn = DriverManager.getConnection("jdbc:postgresql://revature-db1.cpvgxtqimmru.us-west-2.rds.amazonaws.com:5432/postgres?currentSchema=projectone","revature", "revature")){
 
 			Statement s = conn.createStatement();
-			String sql = "select * from ers_reimbursement where reimb_status_id != 1";
+			String sql = "select * from ers_reimbursement where reimb_status_id != 1 order by reimb_submitted desc";
 			ResultSet rs = s.executeQuery(sql);
 			while(rs.next()) {
 				reimb.add(new Reimbursement(rs.getInt(1), rs.getBigDecimal(2), rs.getDate(3), rs.getDate(4), rs.getString(5), rs.getInt(6), rs.getInt(7), rs.getInt(8), rs.getInt(9)));
@@ -60,7 +77,7 @@ public class ReimbursementDao implements DaoContract<Reimbursement,Integer> {
 		try(Connection conn = DriverManager.getConnection("jdbc:postgresql://revature-db1.cpvgxtqimmru.us-west-2.rds.amazonaws.com:5432/postgres?currentSchema=projectone","revature", "revature")){
 
 			Statement s = conn.createStatement();
-			String sql = "select * from ers_reimbursement where reimb_status_id < 3";
+			String sql = "select * from ers_reimbursement where reimb_status_id < 3 order by reimb_submitted desc";
 			ResultSet rs = s.executeQuery(sql);
 			while(rs.next()) {
 				reimb.add(new Reimbursement(rs.getInt(1), rs.getBigDecimal(2), rs.getDate(3), rs.getDate(4), rs.getString(5), rs.getInt(6), rs.getInt(7), rs.getInt(8), rs.getInt(9)));
@@ -78,11 +95,11 @@ public class ReimbursementDao implements DaoContract<Reimbursement,Integer> {
 		String sqlQuery = "select * from ers_reimbursement where reimb_id = ?";
 		try(Connection conn = DriverManager.getConnection("jdbc:postgresql://revature-db1.cpvgxtqimmru.us-west-2.rds.amazonaws.com:5432/postgres?currentSchema=projectone","revature", "revature")){
  
-				PreparedStatement ps = conn.prepareStatement(sqlQuery);
+			PreparedStatement ps = conn.prepareStatement(sqlQuery);
 			ps.setInt(1, i);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				findReimb = new Reimbursement(rs.getInt(1), rs.getBigDecimal(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getInt(8), rs.getInt(9), rs.getInt(10));
+				findReimb = new Reimbursement(rs.getInt(1), rs.getBigDecimal(2), rs.getDate(3), rs.getDate(4), rs.getString(5), rs.getInt(6), rs.getInt(7), rs.getInt(8), rs.getInt(9));
 			}
 			rs.close();
 		}catch (SQLException e) {
@@ -116,22 +133,21 @@ public class ReimbursementDao implements DaoContract<Reimbursement,Integer> {
 	
 	@Override
 	public int create(Reimbursement t) {
-		String sqlQuery = "insert into ers_reimbursement (reimb_id, reimb_amount, reimb_submitted, reimb_resolved, reimb_description, reimb_author, reimb_resolver, reimb_status_id, reimb_type_id) values (default,?,?,?,?,?,?,?,?)";
-		try(Connection conn = DriverManager.getConnection("jdbc:postgresql://revature-db1.cpvgxtqimmru.us-west-2.rds.amazonaws.com:5432/postgres?currentSchema=projectone","revature", "revature")){
- 
-				PreparedStatement ps = conn.prepareStatement(sqlQuery);
-			ps.setBigDecimal(1, t.getReimbursementAmount());
-			ps.setDate(2, t.getSubmittedDate());
-			ps.setDate(3, t.getResolvedDate());
-			ps.setString(4, t.getDescription());
-			ps.setInt(5, t.getReimbursementAuthor());
-			ps.setInt(6, t.getReimbursementResolver());
-			ps.setInt(7, t.getReimbursementStatusId());
-			ps.setInt(8, t.getReimbursementTypeId());
-			ps.executeQuery();
-		}catch (SQLException e) {
-			e.printStackTrace();
-		}
+		/*
+		 * String sqlQuery =
+		 * "insert into ers_reimbursement (reimb_id, reimb_amount, reimb_submitted, reimb_resolved, reimb_description, reimb_author, reimb_resolver, reimb_status_id, reimb_type_id) values (default,?,?,?,?,?,?,?,?)"
+		 * ; try(Connection conn = DriverManager.getConnection(
+		 * "jdbc:postgresql://revature-db1.cpvgxtqimmru.us-west-2.rds.amazonaws.com:5432/postgres?currentSchema=projectone"
+		 * ,"revature", "revature")){
+		 * 
+		 * PreparedStatement ps = conn.prepareStatement(sqlQuery); ps.setBigDecimal(1,
+		 * t.getReimbursementAmount()); ps.setDate(2, t.getSubmittedDate());
+		 * ps.setDate(3, t.getResolvedDate()); ps.setString(4, t.getDescription());
+		 * ps.setInt(5, t.getReimbursementAuthor()); ps.setInt(6,
+		 * t.getReimbursementResolver()); ps.setInt(7, t.getReimbursementStatusId());
+		 * ps.setInt(8, t.getReimbursementTypeId()); ps.executeQuery(); }catch
+		 * (SQLException e) { e.printStackTrace(); }
+		 */
 		return 1;
 	}
 
@@ -168,7 +184,7 @@ public class ReimbursementDao implements DaoContract<Reimbursement,Integer> {
 		String sqlQuery = "select reimb_type from ers_reimbursement_type where reimb_type_id = ?";
 		try(Connection conn = DriverManager.getConnection("jdbc:postgresql://revature-db1.cpvgxtqimmru.us-west-2.rds.amazonaws.com:5432/postgres?currentSchema=projectone","revature", "revature")){
 
-				PreparedStatement ps = conn.prepareStatement(sqlQuery);
+			PreparedStatement ps = conn.prepareStatement(sqlQuery);
 			ps.setInt(1, t.getReimbursementTypeId());
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {

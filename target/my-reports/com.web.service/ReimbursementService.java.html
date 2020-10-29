@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ReimbursementService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ProjectOne</a> &gt; <a href="index.source.html" class="el_package">com.web.service</a> &gt; <span class="el_source">ReimbursementService.java</span></div><h1>ReimbursementService.java</h1><pre class="source lang-java linenums">package com.web.service;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.web.model.Reimbursement;
+import com.web.repo.ReimbursementDao;
+import com.web.repo.UserDao;
+
+public class ReimbursementService {
+
+	private ReimbursementDao rd;
+	
+	public ReimbursementService() {
+<span class="fc" id="L17">		this(new ReimbursementDao());</span>
+<span class="fc" id="L18">	}</span>
+	
+	public ReimbursementService(ReimbursementDao rd) {
+<span class="fc" id="L21">		super();</span>
+<span class="fc" id="L22">		this.rd = rd;</span>
+<span class="fc" id="L23">	}</span>
+	public List&lt;Reimbursement&gt; findHistory(){
+<span class="nc" id="L25">		return rd.findAllNotPending();</span>
+	}
+	public List&lt;Reimbursement&gt; findOpenReimbs(){
+<span class="nc" id="L28">		return rd.findOpenReimbs();</span>
+	}
+	public List&lt;Reimbursement&gt; findAll() {
+<span class="fc" id="L31">		return rd.findAll();</span>
+	}
+	
+	public Reimbursement findById(Integer i) {
+<span class="fc" id="L35">		return rd.findById(i);</span>
+	}
+
+	public int update(Reimbursement t) {
+<span class="nc" id="L39">		return rd.update(t);</span>
+	}
+	
+	public int create(Reimbursement t) {
+<span class="nc" id="L43">		return rd.create(t);</span>
+	}
+
+	public int delete(Integer i) {
+<span class="nc" id="L47">		return rd.delete(i);</span>
+	}
+	
+	public String getReimbStatus(Reimbursement t) {
+<span class="fc" id="L51">		return rd.getReimbStatus(t);</span>
+	}
+	
+	public String getReimbursementType(Reimbursement t) {
+<span class="fc" id="L55">		return rd.getReimbType(t);</span>
+	}
+	
+	public int createNewReimb(HttpServletRequest req, HttpServletResponse resp, String firstname, String lastname) {
+<span class="nc" id="L59">		UserDao ud = new UserDao();</span>
+<span class="nc" id="L60">		int empId = ud.getEmployeeId(firstname, lastname);		</span>
+<span class="nc" id="L61">		return rd.createNewReimb(req, resp, empId);</span>
+	}
+	
+	public void approve(HttpServletRequest req, HttpServletResponse resp) {
+		//resp.setContentType(&quot;text/json&quot;);
+<span class="nc" id="L66">		rd.approve(req, resp);</span>
+<span class="nc" id="L67">	}</span>
+	
+	public void deny(HttpServletRequest req, HttpServletResponse resp) {
+		//resp.setContentType(&quot;text/json&quot;);
+<span class="nc" id="L71">		rd.deny(req, resp);</span>
+<span class="nc" id="L72">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

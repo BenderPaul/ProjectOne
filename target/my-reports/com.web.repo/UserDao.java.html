@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UserDao.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ProjectOne</a> &gt; <a href="index.source.html" class="el_package">com.web.repo</a> &gt; <span class="el_source">UserDao.java</span></div><h1>UserDao.java</h1><pre class="source lang-java linenums">package com.web.repo;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.web.config.EnvironmentConnectionUtil;
+import com.web.model.User;
+
+<span class="fc" id="L17">public class UserDao implements DaoContract&lt;User, Integer&gt; {</span>
+
+	@Override
+	public List&lt;User&gt; findAll() {
+<span class="fc" id="L21">		List&lt;User&gt; user = new LinkedList&lt;&gt;();</span>
+<span class="fc" id="L22">		String sql = &quot;select * from ers_users&quot;;</span>
+<span class="fc" id="L23">		try(Connection conn = DriverManager.getConnection(&quot;jdbc:postgresql://revature-db1.cpvgxtqimmru.us-west-2.rds.amazonaws.com:5432/postgres?currentSchema=projectone&quot;,&quot;revature&quot;, &quot;revature&quot;)){</span>
+<span class="fc" id="L24">			PreparedStatement ps = conn.prepareStatement(sql);</span>
+<span class="fc" id="L25">			ResultSet rs = ps.executeQuery();</span>
+<span class="fc bfc" id="L26" title="All 2 branches covered.">			while(rs.next()) {</span>
+<span class="fc" id="L27">				user.add(new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7)));</span>
+			}
+<span class="fc" id="L29">			rs.close();</span>
+<span class="nc" id="L30">		} catch (SQLException e) {</span>
+<span class="nc" id="L31">			e.printStackTrace();</span>
+<span class="fc" id="L32">		}</span>
+<span class="fc" id="L33">		return user;</span>
+	}
+
+	@Override
+	public User findById(Integer i) {
+<span class="fc" id="L38">		User findUser = null;</span>
+<span class="fc" id="L39">		String sqlQuery = &quot;select * from ers_users where ers_users_id = ?&quot;;</span>
+<span class="fc" id="L40">		try(Connection conn = DriverManager.getConnection(&quot;jdbc:postgresql://revature-db1.cpvgxtqimmru.us-west-2.rds.amazonaws.com:5432/postgres?currentSchema=projectone&quot;,&quot;revature&quot;, &quot;revature&quot;)){</span>
+
+<span class="fc" id="L42">				PreparedStatement ps = conn.prepareStatement(sqlQuery);</span>
+<span class="fc" id="L43">			ps.setInt(1, i);</span>
+<span class="fc" id="L44">			ResultSet rs = ps.executeQuery();</span>
+<span class="fc bfc" id="L45" title="All 2 branches covered.">			while (rs.next()) {</span>
+<span class="fc" id="L46">				findUser = new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7));</span>
+			}
+<span class="fc" id="L48">			rs.close();</span>
+<span class="nc" id="L49">		}catch (SQLException e) {</span>
+<span class="nc" id="L50">			e.printStackTrace();</span>
+<span class="fc" id="L51">		}</span>
+<span class="fc" id="L52">		return findUser;</span>
+	}
+
+	@Override
+	public int update(User t) {
+		// TODO Auto-generated method stub
+<span class="fc" id="L58">		return 0;</span>
+	}
+	
+	@Override
+	public int create(User t) {
+		// TODO Auto-generated method stub
+<span class="fc" id="L64">		return 0;</span>
+	}
+
+	@Override
+	public int delete(Integer i) {
+		// TODO Auto-generated method stub
+<span class="fc" id="L70">		return 0;</span>
+	}
+
+	@Override
+	public User findByName(String name) {
+		// TODO Auto-generated method stub
+<span class="fc" id="L76">		return null;</span>
+	}
+	
+	public String getJobTitle(User t) {
+<span class="fc" id="L80">		String title = null;</span>
+<span class="fc" id="L81">		String sqlQuery = &quot;select user_role from ers_user_roles where ers_user_role_id = ?&quot;;</span>
+<span class="fc" id="L82">		try(Connection conn = DriverManager.getConnection(&quot;jdbc:postgresql://revature-db1.cpvgxtqimmru.us-west-2.rds.amazonaws.com:5432/postgres?currentSchema=projectone&quot;,&quot;revature&quot;, &quot;revature&quot;)){</span>
+
+<span class="fc" id="L84">				PreparedStatement ps = conn.prepareStatement(sqlQuery);</span>
+<span class="fc" id="L85">			ps.setInt(1, t.getUserId());</span>
+<span class="fc" id="L86">			ResultSet rs = ps.executeQuery();</span>
+<span class="fc bfc" id="L87" title="All 2 branches covered.">			while (rs.next()) {</span>
+<span class="fc" id="L88">				title = rs.getString(1);</span>
+			}
+<span class="fc" id="L90">			rs.close();</span>
+<span class="nc" id="L91">		}catch (SQLException e) {</span>
+<span class="nc" id="L92">			e.printStackTrace();</span>
+<span class="fc" id="L93">		}</span>
+<span class="fc" id="L94">		return title;	</span>
+	}
+	
+	public int getEmployeeId(String firstname, String lastName) {
+<span class="fc" id="L98">		int employeeId = 0;</span>
+<span class="fc" id="L99">		String sql = &quot;select ers_users_id from ers_users where user_first_name = ? and user_last_name = ?&quot;;</span>
+<span class="fc" id="L100">		try(Connection conn = DriverManager.getConnection(&quot;jdbc:postgresql://revature-db1.cpvgxtqimmru.us-west-2.rds.amazonaws.com:5432/postgres?currentSchema=projectone&quot;,&quot;revature&quot;, &quot;revature&quot;)){</span>
+ 
+<span class="fc" id="L102">				PreparedStatement ps = conn.prepareStatement(sql);</span>
+<span class="fc" id="L103">			ps.setString(1, firstname);</span>
+<span class="fc" id="L104">			ps.setString(2, lastName);</span>
+<span class="fc" id="L105">			ResultSet rs = ps.executeQuery();</span>
+<span class="fc bfc" id="L106" title="All 2 branches covered.">			while (rs.next()) {</span>
+<span class="fc" id="L107">				employeeId = rs.getInt(1);</span>
+			}
+<span class="nc" id="L109">		} catch (SQLException e) {</span>
+<span class="nc" id="L110">			e.printStackTrace();</span>
+<span class="fc" id="L111">		}</span>
+<span class="fc" id="L112">		return employeeId;</span>
+	}
+	
+	public int create(HttpServletRequest req, HttpServletResponse resp) {
+<span class="nc" id="L116">		String sqlQuery = &quot;insert into ers_users (ers_users_id, ers_username, ers_password, user_first_name, user_last_name, user_email, user_role_id) values (default, ?, ?, ?, ?, ?, 1)&quot;;</span>
+<span class="nc" id="L117">		try(Connection conn = DriverManager.getConnection(&quot;jdbc:postgresql://revature-db1.cpvgxtqimmru.us-west-2.rds.amazonaws.com:5432/postgres?currentSchema=projectone&quot;,&quot;revature&quot;, &quot;revature&quot;)){</span>
+ 
+<span class="nc" id="L119">			PreparedStatement ps = conn.prepareStatement(sqlQuery);</span>
+<span class="nc" id="L120">			ps.setString(1, req.getParameter(&quot;username&quot;));</span>
+<span class="nc" id="L121">			ps.setString(2, req.getParameter(&quot;password&quot;));</span>
+<span class="nc" id="L122">			ps.setString(3, req.getParameter(&quot;firstname&quot;));</span>
+<span class="nc" id="L123">			ps.setString(4, req.getParameter(&quot;lastname&quot;));</span>
+<span class="nc" id="L124">			ps.setString(5, req.getParameter(&quot;newemail&quot;));</span>
+<span class="nc" id="L125">			ps.execute();</span>
+<span class="nc" id="L126">			System.out.println(&quot;The dad query hath been called&quot;);</span>
+<span class="nc" id="L127">		}catch(SQLException e) {</span>
+<span class="nc" id="L128">			e.printStackTrace();</span>
+<span class="nc" id="L129">		}</span>
+<span class="nc" id="L130">		return 1;</span>
+	}
+}
+
+
+
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

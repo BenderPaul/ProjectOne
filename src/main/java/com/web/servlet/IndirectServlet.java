@@ -15,10 +15,10 @@ import com.web.service.UserService;
 
 public class IndirectServlet extends HttpServlet {
 	
-	
+	  public String username;
+	  public String password;
 	  private UserDao ud = new UserDao();
 	  public void init() {
-	  //System.out.println("Indirect Servlet is initialized");
 	  }
 	 
 	@Override
@@ -38,7 +38,7 @@ public class IndirectServlet extends HttpServlet {
 	public void data(HttpServletRequest req, HttpServletResponse resp) throws IOException{
 		switch(req.getRequestURI()) {
 		case "/Project1/all.json":
-			new ReimbDataController().sendAllData(resp);
+			new ReimbDataController().sendAllData(resp, username, password);
 			break;
 		case "/Project1/reimb.json":
 			new ReimbursementService().createNewReimb(req, resp, req.getParameter("user_first_name"), req.getParameter("user_last_name"));
@@ -77,8 +77,8 @@ public class IndirectServlet extends HttpServlet {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		String username = req.getParameter("username");
-		String password = req.getParameter("password");
+		username = req.getParameter("username");
+		password = req.getParameter("password");
 		for (User user : ud.findAll()) {
 			if (user.getUsername().equalsIgnoreCase(username)) {
 				if (user.getPassword().equalsIgnoreCase(password)) {
@@ -94,26 +94,14 @@ public class IndirectServlet extends HttpServlet {
 		}
 		req.getRequestDispatcher("").forward(req, resp);
 	}
-		
-//		if(username.equals("john")) {
-//			if(password.equals("pass")) {
-//				req.getRequestDispatcher("WebCode/html/employeeportal.html").forward(req, resp);
-//			}else req.getRequestDispatcher("").forward(req, resp);		
-//		}else req.getRequestDispatcher("").forward(req, resp);
-//	}
-	
-	@Override
-	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.doPut(req, resp);
-	}
-	
-	@Override
-	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.doDelete(req, resp);
-	}
-	
+
+	/*
+	 * @Override protected void doPut(HttpServletRequest req, HttpServletResponse
+	 * resp) throws ServletException, IOException { super.doPut(req, resp); }
+	 * 
+	 * @Override protected void doDelete(HttpServletRequest req, HttpServletResponse
+	 * resp) throws ServletException, IOException { super.doDelete(req, resp); }
+	 */
 	public void destroy() {
 		System.out.println("Indirect Servlet Destroyed");
 	}
