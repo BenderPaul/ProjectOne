@@ -53,12 +53,12 @@ public class ReimbDataController {
 	}
 	
 	public void approve(HttpServletRequest req, HttpServletResponse resp) {
-		resp.setContentType("text/json");
+		//resp.setContentType("text/json");
 		rs.approve(req, resp);
 	}
 	
 	public void deny(HttpServletRequest req, HttpServletResponse resp) {
-		resp.setContentType("text/json");
+		//resp.setContentType("text/json");
 		rs.deny(req, resp);
 	}
 }
