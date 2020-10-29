@@ -66,8 +66,8 @@ function renderTable(reimbursements) {
 		tr.append(denyButton);
 
 		document.getElementById("reimbTableBody").append(tr);
-		document.getElementById("acceptReimbursementId").value = reimb.reimbursementId;
-		document.getElementById("denyReimbursementId").value = reimb.reimbursementId;
+		document.getElementById("acceptReimbursementId").value = IDTd.innerText;
+		document.getElementById("denyReimbursementId").value = IDTd.innerText;
 	}
 }
 
