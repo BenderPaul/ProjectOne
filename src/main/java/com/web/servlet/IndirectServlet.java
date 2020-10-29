@@ -3,7 +3,6 @@ package com.web.servlet;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -57,6 +56,16 @@ public class IndirectServlet extends HttpServlet {
 		case "/Project1/openreimbs.json":
 			System.out.println("Open reimbursements servlet called");
 			new ReimbDataController().sendOpenReimbs(resp);
+			break;
+		case "/Project1/approve.json":
+			System.out.println("Approving reimbursement...");
+			new ReimbDataController().approve(req, resp);
+			resp.sendRedirect("WebCode/html/managerportal.html");
+			break;
+		case "/Project1/deny.json":
+			System.out.println("Denying reimbursement...");
+			new ReimbDataController().deny(req, resp);
+			resp.sendRedirect("WebCode/html/managerportal.html");
 			break;
 		}
 	}

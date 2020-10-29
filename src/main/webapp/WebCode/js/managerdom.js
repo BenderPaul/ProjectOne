@@ -36,7 +36,7 @@ function renderTable(reimbursements) {
 			if (reimb.reimbursementTypeId === 2){
 				type = "Robbery"
 			}
-			if (reimb.reimbursementTypeId === 2){
+			if (reimb.reimbursementTypeId === 3){
 				type = "Pay Advance"
 			}
 
@@ -50,8 +50,8 @@ function renderTable(reimbursements) {
 		resolverTd.innerText = "2";
 		statusTd.innerText = stat;
 		typeTd.innerText = type;
-		acptButton.innerHTML = '<input type="button" class="btn btn-outline-success"></input>';
-		denyButton.innerHTML = '<input type="button" class="btn btn-outline-danger"></input>';
+		acptButton.innerHTML = '<td><form method="POST" action="/Project1/approve.json"><input type="hidden" value=reimb.reimbursementId name="reimbursementId"/><button type="submit" class="btn btn-outline-success"></button></form></td>';
+		denyButton.innerHTML = '<td><form method="POST" action="/Project1/deny.json"><input type="hidden" value=reimb.reimbursementId name="reimbursementId"/><button type="submit" class="btn btn-outline-danger"></button></form></td>';
 
 		tr.append(IDTd);
 		tr.append(amountTd);
@@ -80,3 +80,6 @@ function renderTable(reimbursements) {
 
   })
   .then((r)=>r.json()).then((reimbursements) => renderTable(reimbursements));
+
+
+

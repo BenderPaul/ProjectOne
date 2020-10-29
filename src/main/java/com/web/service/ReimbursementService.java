@@ -60,5 +60,15 @@ public class ReimbursementService {
 		int empId = ud.getEmployeeId(firstname, lastname);		
 		return rd.createNewReimb(req, resp, empId);
 	}
+	
+	public void approve(HttpServletRequest req, HttpServletResponse resp) {
+		resp.setContentType("text/json");
+		rd.approve(req, resp);
+	}
+	
+	public void deny(HttpServletRequest req, HttpServletResponse resp) {
+		resp.setContentType("text/json");
+		rd.deny(req, resp);
+	}
 
 }
