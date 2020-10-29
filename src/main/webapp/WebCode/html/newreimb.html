@@ -154,28 +154,5 @@
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
         crossorigin="anonymous"></script>
 </body>
-<script type="text/javascript">
-
-    function addReimbursement(){
-    const reimbursement = {
-       reimbursementId: 100,
-       reimbursementAmount: document.getElementById("reimb_amount").value,
-       submittedDate: document.getElementById("reimb_submitted").value,
-       resolvedDate: '2000-10-10'.value,
-       description: document.getElementById("reimb_description").value,
-       reimbursementAuthor: 1,
-       reimbursementResolver: 1,
-       reimbursementStatusId: 1,
-       reimbursementTypeId: document.getElementById("reimb_type_id").value 
-    }
-   fetch('http://52.42.213.40:8082/Project1/reimb.json',{
-        body: reimbursement,
-        method: 'post',
-        mode: "no-cors",
-        headers:{
-            origin: 'localhost'
-        }
-   }) 
-}
-</script>
+<script src="../js/newreimb.js"></script>
 </html>
