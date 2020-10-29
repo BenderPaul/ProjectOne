@@ -50,8 +50,11 @@ function renderTable(reimbursements) {
 		resolverTd.innerText = "2";
 		statusTd.innerText = stat;
 		typeTd.innerText = type;
-		acptButton.innerHTML = '<td><form method="POST" action="/Project1/approve.json"><input type="hidden" value="reimb.reimbursementId" name="reimbursementId"/><button type="submit" class="btn btn-outline-success"></button></form></td>';
-		denyButton.innerHTML = '<td><form method="POST" action="/Project1/deny.json"><input type="hidden" value="reimbursementId" name="reimbursementId"/><button type="submit" class="btn btn-outline-danger"></button></form></td>';
+		acptButton.innerHTML = '<td><form method="POST" action="/Project1/approve.json"><input type="hidden" value="reimb.reimbursementId" id="acceptReimbursementId"/><button type="submit" class="btn btn-outline-success"></button></form></td>';
+		denyButton.innerHTML = '<td><form method="POST" action="/Project1/deny.json"><input type="hidden" value="reimbursementId" id="denyReimbursementId"/><button type="submit" class="btn btn-outline-danger"></button></form></td>';
+
+		document.getElementById("acceptReimbursementId").value = reimb.reimbursementId;
+		document.getElementById("denyReimbursementId").value = reimb.reimbursementId;
 
 		tr.append(IDTd);
 		tr.append(amountTd);
