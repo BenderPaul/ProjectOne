@@ -15,7 +15,7 @@ async function addReimbursement(){
    }
   const fetched = await fetch('http://52.42.213.40:8082/Project1/reimb.json',{
        body: reimbursement,
-       method: 'post',
+       method: "POST",
        mode: "no-cors",
        headers:{
            origin: 'localhost'
