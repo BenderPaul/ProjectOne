@@ -67,7 +67,7 @@ function renderTable(reimbursements) {
 
 //document.getElementById("claimSubmit").addEventListener('click', addReimbursement);
 
- fetch('http://localhost:8080/Project1/all.json', {
+ fetch('http://52.42.213.40:8082/Project1/all.json', {
   	body: JSON.stringify(),
   	method: 'post',
  	mode: "no-cors",
