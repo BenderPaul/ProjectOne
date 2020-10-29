@@ -1,7 +1,7 @@
 
 
 
-function addReimbursement(){
+async function addReimbursement(){
    const reimbursement = {
       reimbursementId: 100,
       reimbursementAmount: document.getElementById("reimb_amount").value,
