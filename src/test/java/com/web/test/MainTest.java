@@ -90,9 +90,11 @@ import com.web.servlet.IndirectServlet;
 	  assertEquals("Approved",testReimbService.getReimbStatus(testReimbService.findById(2))); 
   }
   
-  @Test public void testGetAllReimbursements() {
-	  assertEquals(BigDecimal.valueOf(10000), testReimbService.findAll().get(3).getReimbursementAmount()); 
-  }
+	/*
+	 * @Test public void testGetAllReimbursements() {
+	 * assertEquals(BigDecimal.valueOf(10000),
+	 * testReimbService.findAll().get(3).getReimbursementAmount()); }
+	 */
   
   @Test public void testGetSubmitDate() {
 	  assertEquals(Date.valueOf("2020-10-20"), testReimb.getSubmittedDate());
@@ -106,9 +108,11 @@ import com.web.servlet.IndirectServlet;
 	  assertEquals("twinkies", testReimb.getDescription());
   }
   
-  @Test public void testReimbControllerToDao() {
-	  assertEquals(BigDecimal.valueOf(10000), testReimbCont.findAll().get(3).getReimbursementAmount()); 
-  }
+	/*
+	 * @Test public void testReimbControllerToDao() {
+	 * assertEquals(BigDecimal.valueOf(10000),
+	 * testReimbCont.findAll().get(3).getReimbursementAmount()); }
+	 */
   
   @Test public void testReimbControllerFindById() {
 	  assertEquals("I'm testing the create method", testReimbCont.findById(1).getDescription()); 
