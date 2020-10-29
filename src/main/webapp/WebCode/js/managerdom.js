@@ -77,8 +77,6 @@ function renderTable(reimbursements) {
   	body: JSON.stringify(),
   	method: 'post',
  	mode: "no-cors",
- 	headers:{
- 		origin: 'localhost'
- 	} 
+
   })
   .then((r)=>r.json()).then((reimbursements) => renderTable(reimbursements));

@@ -116,7 +116,7 @@ public class UserDao implements DaoContract<User, Integer> {
 		String sqlQuery = "insert into ers_users (ers_users_id, ers_username, ers_password, user_first_name, user_last_name, user_email, user_role_id) values (default, ?, ?, ?, ?, ?, 1)";
 		try(Connection conn = DriverManager.getConnection("jdbc:postgresql://revature-db1.cpvgxtqimmru.us-west-2.rds.amazonaws.com:5432/postgres?currentSchema=projectone","revature", "revature")){
  
-				PreparedStatement ps = conn.prepareStatement(sqlQuery);
+			PreparedStatement ps = conn.prepareStatement(sqlQuery);
 			ps.setString(1, req.getParameter("username"));
 			ps.setString(2, req.getParameter("password"));
 			ps.setString(3, req.getParameter("firstname"));
