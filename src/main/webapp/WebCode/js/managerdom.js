@@ -50,8 +50,8 @@ function renderTable(reimbursements) {
 		resolverTd.innerText = "2";
 		statusTd.innerText = stat;
 		typeTd.innerText = type;
-		acptButton.innerHTML = '<td><form method="POST" action="/Project1/approve.json"><input type="hidden" name="reimbursementId" value="null" class="ReimbursementId"/><button type="submit" class="btn btn-outline-success"></button></form></td>';
-		denyButton.innerHTML = '<td><form method="POST" action="/Project1/deny.json"><input type="hidden" name="reimbursementId" value="null" class="ReimbursementId"/><button type="submit" class="btn btn-outline-danger"></button></form></td>';
+		acptButton.innerHTML = '<td><form method="POST" action="/Project1/approve.json"><input type="hidden" id="reimbursementId" name="reimbursementId" value="null" class="ReimbursementId"/><button type="submit" class="btn btn-outline-success"></button></form></td>';
+		denyButton.innerHTML = '<td><form method="POST" action="/Project1/deny.json"><input type="hidden" id="reimbursementId" name="reimbursementId" value="null" class="ReimbursementId"/><button type="submit" class="btn btn-outline-danger"></button></form></td>';
 
 		tr.append(IDTd);
 		tr.append(amountTd);
