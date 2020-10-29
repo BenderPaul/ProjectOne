@@ -68,7 +68,7 @@ function renderTable(reimbursements) {
 		
 		document.getElementById("reimbTableBody").append(tr);
 		
-		let buttons = document.getElementsByClassName(ReimbursementId);
+		let buttons = document.getElementsByClassName("ReimbursementId");
 		for (var i = 0; i < buttons.length; i++){
 			if (buttons[i].value = null){
 				buttons[i].value = IDTd.innerText;
