@@ -182,6 +182,7 @@ public class ReimbursementDao implements DaoContract<Reimbursement,Integer> {
 	}
 	
 	public void approve(HttpServletRequest req, HttpServletResponse resp) {
+		System.out.println(req.getParameter("reimbursementId"));
 		String sqlQuery = "update ers_reimbursement set reimb_type_id = 3 where reimb_id = ?";
 		try(Connection conn = DriverManager.getConnection("jdbc:postgresql://revature-db1.cpvgxtqimmru.us-west-2.rds.amazonaws.com:5432/postgres?currentSchema=projectone","revature", "revature")){
 			PreparedStatement ps = conn.prepareStatement(sqlQuery);

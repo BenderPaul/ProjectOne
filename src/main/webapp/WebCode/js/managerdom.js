@@ -68,10 +68,10 @@ function renderTable(reimbursements) {
 		
 		document.getElementById("reimbTableBody").append(tr);
 		
-		let buttons = document.getElementsByClassName("ReimbursementId");
-		for (var i = 0; i < buttons.length; i++){
-			if (buttons[i].value == "null"){
-				buttons[i].value = IDTd.innerText;
+		let inputs = document.getElementsByClassName("ReimbursementId");
+		for (var i = 0; i < inputs.length; i++){
+			if (inputs[i].value == "null"){
+				inputs[i].value = IDTd.innerText;
 			}
 		}
 	}
