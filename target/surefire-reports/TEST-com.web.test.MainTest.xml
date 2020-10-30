@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.web.test.MainTest" time="6.528" tests="62" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.web.test.MainTest" time="7.016" tests="63" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files (x86)\Java\jdk1.8.0_261\jre\bin"/>
@@ -45,7 +45,7 @@
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="32"/>
     <property name="java.home" value="C:\Program Files (x86)\Java\jdk1.8.0_261\jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher clean test"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher test"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="en"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -64,26 +64,26 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase name="testManagerSetUserId" classname="com.web.test.MainTest" time="0.054"/>
+  <testcase name="testManagerSetUserId" classname="com.web.test.MainTest" time="0.059"/>
   <testcase name="testGetDeescription" classname="com.web.test.MainTest" time="0"/>
   <testcase name="testUserSetLastName" classname="com.web.test.MainTest" time="0"/>
-  <testcase name="testUserDatabaseGetUsername" classname="com.web.test.MainTest" time="1.263"/>
+  <testcase name="testUserDatabaseGetUsername" classname="com.web.test.MainTest" time="1.152"/>
   <testcase name="testUserDaoCreate" classname="com.web.test.MainTest" time="0"/>
   <testcase name="testUserDaoDelete" classname="com.web.test.MainTest" time="0"/>
-  <testcase name="testGetAllReimbursements" classname="com.web.test.MainTest" time="0.268"/>
+  <testcase name="testGetAllReimbursements" classname="com.web.test.MainTest" time="0.293"/>
   <testcase name="testReimbDaoCreate" classname="com.web.test.MainTest" time="0"/>
   <testcase name="testReimbDaoDelete" classname="com.web.test.MainTest" time="0.001"/>
   <testcase name="testUserToString" classname="com.web.test.MainTest" time="0"/>
   <testcase name="testManagerControllerfindAll" classname="com.web.test.MainTest" time="0"/>
   <testcase name="testManagerSetUserRoleId" classname="com.web.test.MainTest" time="0"/>
   <testcase name="testManagerSetFirstName" classname="com.web.test.MainTest" time="0"/>
-  <testcase name="testManagerControllerCreate" classname="com.web.test.MainTest" time="0.001"/>
-  <testcase name="testManagerControllerDelete" classname="com.web.test.MainTest" time="0"/>
+  <testcase name="testManagerControllerCreate" classname="com.web.test.MainTest" time="0"/>
+  <testcase name="testManagerControllerDelete" classname="com.web.test.MainTest" time="0.001"/>
   <testcase name="testReimbursementControllerConstructor" classname="com.web.test.MainTest" time="0"/>
   <testcase name="testUserDaoUpdate" classname="com.web.test.MainTest" time="0"/>
-  <testcase name="testReimbDaoUpdate" classname="com.web.test.MainTest" time="0.001"/>
+  <testcase name="testReimbDaoUpdate" classname="com.web.test.MainTest" time="0"/>
   <testcase name="testManagerSetLastName" classname="com.web.test.MainTest" time="0"/>
-  <testcase name="testReimbDaoGetStatus" classname="com.web.test.MainTest" time="0.509"/>
+  <testcase name="testReimbDaoGetStatus" classname="com.web.test.MainTest" time="0.55"/>
   <testcase name="testUserSetUsername" classname="com.web.test.MainTest" time="0"/>
   <testcase name="testManagerControllerUpdate" classname="com.web.test.MainTest" time="0"/>
   <testcase name="testReimbConstructor" classname="com.web.test.MainTest" time="0"/>
@@ -91,34 +91,35 @@
   <testcase name="testReimbursementSetReimbursementTypeId" classname="com.web.test.MainTest" time="0.001"/>
   <testcase name="testManagerSetEmail" classname="com.web.test.MainTest" time="0"/>
   <testcase name="testGetSubmitDate" classname="com.web.test.MainTest" time="0"/>
-  <testcase name="testUserDatabaseGetPassword" classname="com.web.test.MainTest" time="0.257"/>
+  <testcase name="testUserDatabaseGetPassword" classname="com.web.test.MainTest" time="0.289"/>
   <testcase name="testUserDaoFindByName" classname="com.web.test.MainTest" time="0"/>
-  <testcase name="testReimbControllerToDao" classname="com.web.test.MainTest" time="0.263"/>
-  <testcase name="testUserDatabaseFindAll" classname="com.web.test.MainTest" time="0.251"/>
-  <testcase name="testDataServlet" classname="com.web.test.MainTest" time="0.009"/>
+  <testcase name="testReimbControllerToDao" classname="com.web.test.MainTest" time="0.267"/>
+  <testcase name="testUserDatabaseFindAll" classname="com.web.test.MainTest" time="0.301"/>
+  <testcase name="testDataServlet" classname="com.web.test.MainTest" time="0.007"/>
   <testcase name="testUserSetFirstName" classname="com.web.test.MainTest" time="0"/>
   <testcase name="testGetResolveDate" classname="com.web.test.MainTest" time="0"/>
-  <testcase name="testReimbControllerFindById" classname="com.web.test.MainTest" time="0.267"/>
+  <testcase name="testReimbControllerFindById" classname="com.web.test.MainTest" time="0.283"/>
   <testcase name="testManagerSetUsername" classname="com.web.test.MainTest" time="0"/>
   <testcase name="testUserConstructor" classname="com.web.test.MainTest" time="0"/>
   <testcase name="testUserSetUserId" classname="com.web.test.MainTest" time="0"/>
-  <testcase name="testReimbDaoFindClosedReimbs" classname="com.web.test.MainTest" time="0.256"/>
+  <testcase name="testReimbDaoFindClosedReimbs" classname="com.web.test.MainTest" time="0.277"/>
   <testcase name="testReimbursementSetReimbursementResolver" classname="com.web.test.MainTest" time="0"/>
-  <testcase name="testUserDatabaseGetEmail" classname="com.web.test.MainTest" time="0.271"/>
-  <testcase name="testGetReimbursementType" classname="com.web.test.MainTest" time="0.569"/>
+  <testcase name="testUserDatabaseGetEmail" classname="com.web.test.MainTest" time="0.259"/>
+  <testcase name="testGetReimbursementType" classname="com.web.test.MainTest" time="0.587"/>
   <testcase name="testReimbToString" classname="com.web.test.MainTest" time="0"/>
-  <testcase name="testReimbDaoFindOpenReimbs" classname="com.web.test.MainTest" time="0.272"/>
+  <testcase name="testReimbDaoFindOpenReimbs" classname="com.web.test.MainTest" time="0.261"/>
   <testcase name="testUserSetPassword" classname="com.web.test.MainTest" time="0"/>
-  <testcase name="testReimbursementSetReimbursementId" classname="com.web.test.MainTest" time="0"/>
+  <testcase name="testReimbursementSetReimbursementId" classname="com.web.test.MainTest" time="0.001"/>
   <testcase name="testManagerControllerConstructor" classname="com.web.test.MainTest" time="0"/>
   <testcase name="testUserControllerConstructor" classname="com.web.test.MainTest" time="0"/>
   <testcase name="testReimbDataControllerConstructor" classname="com.web.test.MainTest" time="0.001"/>
-  <testcase name="testUserDatabaseGetJobTitle" classname="com.web.test.MainTest" time="0.519"/>
-  <testcase name="testManagerConstructor" classname="com.web.test.MainTest" time="0.001"/>
-  <testcase name="testUserDatabaseGetFirstName" classname="com.web.test.MainTest" time="0.299"/>
-  <testcase name="testUserDatabaseGetLastName" classname="com.web.test.MainTest" time="0.254"/>
-  <testcase name="testGetReimbursementStatus" classname="com.web.test.MainTest" time="0.551"/>
-  <testcase name="testUserDatabaseGetEmployeeId" classname="com.web.test.MainTest" time="0.3"/>
+  <testcase name="testUserDatabaseGetJobTitle" classname="com.web.test.MainTest" time="0.563"/>
+  <testcase name="testManagerConstructor" classname="com.web.test.MainTest" time="0"/>
+  <testcase name="testUserDatabaseGetFirstName" classname="com.web.test.MainTest" time="0.279"/>
+  <testcase name="testGetUserByID" classname="com.web.test.MainTest" time="0.273"/>
+  <testcase name="testUserDatabaseGetLastName" classname="com.web.test.MainTest" time="0.305"/>
+  <testcase name="testGetReimbursementStatus" classname="com.web.test.MainTest" time="0.55"/>
+  <testcase name="testUserDatabaseGetEmployeeId" classname="com.web.test.MainTest" time="0.361"/>
   <testcase name="testUserSetUserRoleId" classname="com.web.test.MainTest" time="0.001"/>
   <testcase name="testManagerSetPassword" classname="com.web.test.MainTest" time="0"/>
   <testcase name="testUserSetEmail" classname="com.web.test.MainTest" time="0"/>

@@ -30,7 +30,7 @@ public class ReimbDataController {
 <span class="nc" id="L30">			resp.getWriter().println(new ObjectMapper().writeValueAsString(reimb));</span>
 <span class="nc" id="L31">		} catch (IOException e) {</span>
 <span class="nc" id="L32">			e.printStackTrace();</span>
-<span class="nc" id="L33">		}		</span>
+		}		
 <span class="nc" id="L34">	}</span>
 	public void sendOpenReimbs(HttpServletResponse resp) {
 <span class="nc" id="L36">		resp.setContentType(&quot;text/json&quot;);</span>
@@ -39,7 +39,7 @@ public class ReimbDataController {
 <span class="nc" id="L39">			resp.getWriter().println(new ObjectMapper().writeValueAsString(reimb));</span>
 <span class="nc" id="L40">		} catch (IOException e) {</span>
 <span class="nc" id="L41">			e.printStackTrace();</span>
-<span class="nc" id="L42">		}		</span>
+		}		
 <span class="nc" id="L43">	}</span>
 
 	public void sendAllData(HttpServletResponse res) {
@@ -49,7 +49,7 @@ public class ReimbDataController {
 <span class="nc" id="L49">			res.getWriter().println(new ObjectMapper().writeValueAsString(reimb));</span>
 <span class="nc" id="L50">		} catch (IOException e) {</span>
 <span class="nc" id="L51">			e.printStackTrace();</span>
-<span class="nc" id="L52">		}</span>
+		}
 <span class="nc" id="L53">	}</span>
 	
 	public void approve(HttpServletRequest req, HttpServletResponse resp) {

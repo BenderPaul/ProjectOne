@@ -34,7 +34,7 @@ function renderTable(reimbursements) {
 			if (reimb.reimbursementTypeId === 2){
 				type = "Robbery"
 			}
-			if (reimb.reimbursementTypeId === 2){
+			if (reimb.reimbursementTypeId === 3){
 				type = "Pay Advance"
 			}
 

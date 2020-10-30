@@ -33,9 +33,9 @@ public class ReimbursementController {
 		this.rs = rs;
 	}
 	
-	/*
-	 * public List<Reimbursement> findAll(){ return rs.findAll(); }
-	 */
+	
+	 public List<Reimbursement> findAll(){ return rs.findAll(); }
+	
 	
 	public Reimbursement findById(Integer i) {
 		return rs.findById(i);

@@ -29,7 +29,7 @@ import com.web.model.User;
 <span class="fc" id="L29">			rs.close();</span>
 <span class="nc" id="L30">		} catch (SQLException e) {</span>
 <span class="nc" id="L31">			e.printStackTrace();</span>
-<span class="fc" id="L32">		}</span>
+		}
 <span class="fc" id="L33">		return user;</span>
 	}
 
@@ -48,7 +48,7 @@ import com.web.model.User;
 <span class="fc" id="L48">			rs.close();</span>
 <span class="nc" id="L49">		}catch (SQLException e) {</span>
 <span class="nc" id="L50">			e.printStackTrace();</span>
-<span class="fc" id="L51">		}</span>
+		}
 <span class="fc" id="L52">		return findUser;</span>
 	}
 
@@ -90,7 +90,7 @@ import com.web.model.User;
 <span class="fc" id="L90">			rs.close();</span>
 <span class="nc" id="L91">		}catch (SQLException e) {</span>
 <span class="nc" id="L92">			e.printStackTrace();</span>
-<span class="fc" id="L93">		}</span>
+		}
 <span class="fc" id="L94">		return title;	</span>
 	}
 	
@@ -108,26 +108,44 @@ import com.web.model.User;
 			}
 <span class="nc" id="L109">		} catch (SQLException e) {</span>
 <span class="nc" id="L110">			e.printStackTrace();</span>
-<span class="fc" id="L111">		}</span>
+		}
 <span class="fc" id="L112">		return employeeId;</span>
 	}
 	
-	public int create(HttpServletRequest req, HttpServletResponse resp) {
-<span class="nc" id="L116">		String sqlQuery = &quot;insert into ers_users (ers_users_id, ers_username, ers_password, user_first_name, user_last_name, user_email, user_role_id) values (default, ?, ?, ?, ?, ?, 1)&quot;;</span>
-<span class="nc" id="L117">		try(Connection conn = DriverManager.getConnection(&quot;jdbc:postgresql://revature-db1.cpvgxtqimmru.us-west-2.rds.amazonaws.com:5432/postgres?currentSchema=projectone&quot;,&quot;revature&quot;, &quot;revature&quot;)){</span>
+	public int getEmployeeIdByLogin(String firstname, String lastName) {
+<span class="fc" id="L116">		int employeeId = 0;</span>
+<span class="fc" id="L117">		String sql = &quot;select ers_users_id from ers_users where ers_username = ? and ers_password = ?&quot;;</span>
+<span class="fc" id="L118">		try(Connection conn = DriverManager.getConnection(&quot;jdbc:postgresql://revature-db1.cpvgxtqimmru.us-west-2.rds.amazonaws.com:5432/postgres?currentSchema=projectone&quot;,&quot;revature&quot;, &quot;revature&quot;)){</span>
  
-<span class="nc" id="L119">			PreparedStatement ps = conn.prepareStatement(sqlQuery);</span>
-<span class="nc" id="L120">			ps.setString(1, req.getParameter(&quot;username&quot;));</span>
-<span class="nc" id="L121">			ps.setString(2, req.getParameter(&quot;password&quot;));</span>
-<span class="nc" id="L122">			ps.setString(3, req.getParameter(&quot;firstname&quot;));</span>
-<span class="nc" id="L123">			ps.setString(4, req.getParameter(&quot;lastname&quot;));</span>
-<span class="nc" id="L124">			ps.setString(5, req.getParameter(&quot;newemail&quot;));</span>
-<span class="nc" id="L125">			ps.execute();</span>
-<span class="nc" id="L126">			System.out.println(&quot;The dad query hath been called&quot;);</span>
-<span class="nc" id="L127">		}catch(SQLException e) {</span>
+<span class="fc" id="L120">			PreparedStatement ps = conn.prepareStatement(sql);</span>
+<span class="fc" id="L121">			ps.setString(1, firstname);</span>
+<span class="fc" id="L122">			ps.setString(2, lastName);</span>
+<span class="fc" id="L123">			ResultSet rs = ps.executeQuery();</span>
+<span class="fc bfc" id="L124" title="All 2 branches covered.">			while (rs.next()) {</span>
+<span class="fc" id="L125">				employeeId = rs.getInt(1);</span>
+			}
+<span class="nc" id="L127">		} catch (SQLException e) {</span>
 <span class="nc" id="L128">			e.printStackTrace();</span>
-<span class="nc" id="L129">		}</span>
-<span class="nc" id="L130">		return 1;</span>
+		}
+<span class="fc" id="L130">		return employeeId;</span>
+	}
+	
+	public int create(HttpServletRequest req, HttpServletResponse resp) {
+<span class="nc" id="L134">		String sqlQuery = &quot;insert into ers_users (ers_users_id, ers_username, ers_password, user_first_name, user_last_name, user_email, user_role_id) values (default, ?, ?, ?, ?, ?, 1)&quot;;</span>
+<span class="nc" id="L135">		try(Connection conn = DriverManager.getConnection(&quot;jdbc:postgresql://revature-db1.cpvgxtqimmru.us-west-2.rds.amazonaws.com:5432/postgres?currentSchema=projectone&quot;,&quot;revature&quot;, &quot;revature&quot;)){</span>
+ 
+<span class="nc" id="L137">			PreparedStatement ps = conn.prepareStatement(sqlQuery);</span>
+<span class="nc" id="L138">			ps.setString(1, req.getParameter(&quot;username&quot;));</span>
+<span class="nc" id="L139">			ps.setString(2, req.getParameter(&quot;password&quot;));</span>
+<span class="nc" id="L140">			ps.setString(3, req.getParameter(&quot;firstname&quot;));</span>
+<span class="nc" id="L141">			ps.setString(4, req.getParameter(&quot;lastname&quot;));</span>
+<span class="nc" id="L142">			ps.setString(5, req.getParameter(&quot;newemail&quot;));</span>
+<span class="nc" id="L143">			ps.execute();</span>
+<span class="nc" id="L144">			System.out.println(&quot;The dad query hath been called&quot;);</span>
+<span class="nc" id="L145">		}catch(SQLException e) {</span>
+<span class="nc" id="L146">			e.printStackTrace();</span>
+		}
+<span class="nc" id="L148">		return 1;</span>
 	}
 }
 

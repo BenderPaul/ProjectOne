@@ -90,11 +90,11 @@ import com.web.servlet.IndirectServlet;
 	  assertEquals("Approved",testReimbService.getReimbStatus(testReimbService.findById(2))); 
   }
   
-	/*
-	 * @Test public void testGetAllReimbursements() {
-	 * assertEquals(BigDecimal.valueOf(10000),
-	 * testReimbService.findAll().get(3).getReimbursementAmount()); }
-	 */
+	
+  @Test public void testGetAllReimbursements() {
+	  assertEquals(BigDecimal.valueOf(10000), testReimbService.findAll().get(3).getReimbursementAmount()); 
+  }
+	
   
   @Test public void testGetSubmitDate() {
 	  assertEquals(Date.valueOf("2020-10-20"), testReimb.getSubmittedDate());
@@ -108,12 +108,12 @@ import com.web.servlet.IndirectServlet;
 	  assertEquals("twinkies", testReimb.getDescription());
   }
   
-	/*
-	 * @Test public void testReimbControllerToDao() {
-	 * assertEquals(BigDecimal.valueOf(10000),
-	 * testReimbCont.findAll().get(3).getReimbursementAmount()); }
-	 */
-  
+	
+  @Test public void testReimbControllerToDao() {
+	  assertEquals(BigDecimal.valueOf(10000),
+	  testReimbCont.findAll().get(3).getReimbursementAmount()); 
+  }
+	 
   @Test public void testReimbControllerFindById() {
 	  assertEquals("I'm testing the create method", testReimbCont.findById(1).getDescription()); 
   }
@@ -123,11 +123,11 @@ import com.web.servlet.IndirectServlet;
   }
   
   @Test public void testReimbDaoFindOpenReimbs() {
-	  assertEquals(BigDecimal.valueOf(25), testDao.findOpenReimbs().get(1).getReimbursementAmount());
+	  assertEquals(BigDecimal.valueOf(88.0), testDao.findOpenReimbs().get(1).getReimbursementAmount());
   }
   
   @Test public void testReimbDaoFindClosedReimbs() {
-	  assertEquals(BigDecimal.valueOf(100), testDao.findAllNotPending().get(0).getReimbursementAmount());
+	  assertEquals(BigDecimal.valueOf(25), testDao.findAllNotPending().get(0).getReimbursementAmount());
   }
   
   @Test public void testReimbDaoDelete() {
@@ -326,8 +326,10 @@ import com.web.servlet.IndirectServlet;
 	  testUser.setUserRoleId(2);
 	  assertEquals(2, testUser.getUserRoleId());
   }
-
   
+  @Test public void testGetUserByID() {
+	  assertEquals(2, testUserDao.getEmployeeIdByLogin("stink", "127f243e83f088f02e5516b616000d26"));
+  } 
 }
  
   

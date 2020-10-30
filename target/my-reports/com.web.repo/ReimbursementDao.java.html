@@ -34,7 +34,7 @@ import com.web.model.Reimbursement;
 <span class="fc" id="L34">			rs.close();</span>
 <span class="nc" id="L35">		} catch (SQLException e) {</span>
 <span class="nc" id="L36">			e.printStackTrace();</span>
-<span class="fc" id="L37">		}</span>
+		}
 <span class="fc" id="L38">		return reimb;</span>
 	}
 	
@@ -43,7 +43,7 @@ import com.web.model.Reimbursement;
 <span class="fc" id="L43">		try(Connection conn = DriverManager.getConnection(&quot;jdbc:postgresql://revature-db1.cpvgxtqimmru.us-west-2.rds.amazonaws.com:5432/postgres?currentSchema=projectone&quot;,&quot;revature&quot;, &quot;revature&quot;)){</span>
 
 <span class="fc" id="L45">			Statement s = conn.createStatement();</span>
-<span class="fc" id="L46">			String sql = &quot;select * from ers_reimbursement where reimb_status_id != 1&quot;;</span>
+<span class="fc" id="L46">			String sql = &quot;select * from ers_reimbursement where reimb_status_id != 1 order by reimb_submitted desc&quot;;</span>
 <span class="fc" id="L47">			ResultSet rs = s.executeQuery(sql);</span>
 <span class="fc bfc" id="L48" title="All 2 branches covered.">			while(rs.next()) {</span>
 <span class="fc" id="L49">				reimb.add(new Reimbursement(rs.getInt(1), rs.getBigDecimal(2), rs.getDate(3), rs.getDate(4), rs.getString(5), rs.getInt(6), rs.getInt(7), rs.getInt(8), rs.getInt(9)));</span>
@@ -51,7 +51,7 @@ import com.web.model.Reimbursement;
 <span class="fc" id="L51">			rs.close();</span>
 <span class="nc" id="L52">		} catch (SQLException e) {</span>
 <span class="nc" id="L53">			e.printStackTrace();</span>
-<span class="fc" id="L54">		}</span>
+		}
 <span class="fc" id="L55">		return reimb;</span>
 	}
 	
@@ -60,7 +60,7 @@ import com.web.model.Reimbursement;
 <span class="fc" id="L60">		try(Connection conn = DriverManager.getConnection(&quot;jdbc:postgresql://revature-db1.cpvgxtqimmru.us-west-2.rds.amazonaws.com:5432/postgres?currentSchema=projectone&quot;,&quot;revature&quot;, &quot;revature&quot;)){</span>
 
 <span class="fc" id="L62">			Statement s = conn.createStatement();</span>
-<span class="fc" id="L63">			String sql = &quot;select * from ers_reimbursement where reimb_status_id &lt; 3&quot;;</span>
+<span class="fc" id="L63">			String sql = &quot;select * from ers_reimbursement where reimb_status_id &lt; 3 order by reimb_submitted desc&quot;;</span>
 <span class="fc" id="L64">			ResultSet rs = s.executeQuery(sql);</span>
 <span class="fc bfc" id="L65" title="All 2 branches covered.">			while(rs.next()) {</span>
 <span class="fc" id="L66">				reimb.add(new Reimbursement(rs.getInt(1), rs.getBigDecimal(2), rs.getDate(3), rs.getDate(4), rs.getString(5), rs.getInt(6), rs.getInt(7), rs.getInt(8), rs.getInt(9)));</span>
@@ -68,7 +68,7 @@ import com.web.model.Reimbursement;
 <span class="fc" id="L68">			rs.close();</span>
 <span class="nc" id="L69">		} catch (SQLException e) {</span>
 <span class="nc" id="L70">			e.printStackTrace();</span>
-<span class="fc" id="L71">		}</span>
+		}
 <span class="fc" id="L72">		return reimb;</span>
 	}
 
@@ -87,7 +87,7 @@ import com.web.model.Reimbursement;
 <span class="fc" id="L87">			rs.close();</span>
 <span class="nc" id="L88">		}catch (SQLException e) {</span>
 <span class="nc" id="L89">			e.printStackTrace();</span>
-<span class="fc" id="L90">		}</span>
+		}
 <span class="fc" id="L91">		return findReimb;</span>
 	}
 
@@ -110,7 +110,7 @@ import com.web.model.Reimbursement;
 <span class="nc" id="L110">			ps.execute();</span>
 <span class="nc" id="L111">		}catch(SQLException e) {</span>
 <span class="nc" id="L112">			e.printStackTrace();</span>
-<span class="nc" id="L113">		}</span>
+		}
 <span class="nc" id="L114">		return 1;</span>
 	}
 	
@@ -159,7 +159,7 @@ import com.web.model.Reimbursement;
 <span class="fc" id="L159">			rs.close();</span>
 <span class="nc" id="L160">		}catch (SQLException e) {</span>
 <span class="nc" id="L161">			e.printStackTrace();</span>
-<span class="fc" id="L162">		}</span>
+		}
 <span class="fc" id="L163">		return status;	</span>
 	}
 	public String getReimbType(Reimbursement t) {
@@ -176,7 +176,7 @@ import com.web.model.Reimbursement;
 <span class="fc" id="L176">			rs.close();</span>
 <span class="nc" id="L177">		}catch (SQLException e) {</span>
 <span class="nc" id="L178">			e.printStackTrace();</span>
-<span class="fc" id="L179">		}</span>
+		}
 <span class="fc" id="L180">		return type;	</span>
 	}
 	
@@ -190,7 +190,7 @@ import com.web.model.Reimbursement;
 <span class="nc" id="L190">			rs.close();</span>
 <span class="nc" id="L191">		}catch (SQLException e) {</span>
 <span class="nc" id="L192">			e.printStackTrace();</span>
-<span class="nc" id="L193">		}	</span>
+		}	
 <span class="nc" id="L194">	}</span>
 	
 	public void deny(HttpServletRequest req, HttpServletResponse resp) {
@@ -202,7 +202,7 @@ import com.web.model.Reimbursement;
 <span class="nc" id="L202">			rs.close();</span>
 <span class="nc" id="L203">		}catch (SQLException e) {</span>
 <span class="nc" id="L204">			e.printStackTrace();</span>
-<span class="nc" id="L205">		}</span>
+		}
 <span class="nc" id="L206">	}</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>
