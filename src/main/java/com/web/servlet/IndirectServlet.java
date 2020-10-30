@@ -38,7 +38,7 @@ public class IndirectServlet extends HttpServlet {
 	public void data(HttpServletRequest req, HttpServletResponse resp) throws IOException{
 		switch(req.getRequestURI()) {
 		case "/Project1/all.json":
-			new ReimbDataController().sendAllData(resp, username, password);
+			new ReimbDataController().sendAllData(resp);
 			break;
 		case "/Project1/reimb.json":
 			new ReimbursementService().createNewReimb(req, resp, req.getParameter("user_first_name"), req.getParameter("user_last_name"));
