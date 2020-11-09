@@ -17,10 +17,13 @@ This full stack application allows employees of a small business to submit expen
  
  **Features**
  
- Secure password hashing for users
- Stylish, minimalistic design
- Easy-to-use interface
- Easily managed by a single finance manager
+ Secure password hashing for users.
+ 
+ Stylish, minimalistic design.
+ 
+ Easy-to-use interface.
+ 
+ Easily managed by a single finance manager.
  
  **Additional Features to be added**
 
